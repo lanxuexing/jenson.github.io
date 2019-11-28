@@ -1,0 +1,590 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lee/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lee/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="flutter," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="1. Waiting for another flutter command to release the startup lock…1&#x2F;&#x2F; 杀死dart进程2flutter packages pub build_runner watch34&#x2F;&#x2F; 终极方案,删除flutter SDK文件夹目录下的bin&#x2F;cache下边的lockfile文件5rm .&#x2F;flutter&#x2F;bin&#x2F;cache&#x2F;lockf">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter 常见问题及其解决方案">
+<meta property="og:url" content="http:&#x2F;&#x2F;lanxuexing.github.io&#x2F;2019&#x2F;05&#x2F;25&#x2F;flutter-issues&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Waiting for another flutter command to release the startup lock…1&#x2F;&#x2F; 杀死dart进程2flutter packages pub build_runner watch34&#x2F;&#x2F; 终极方案,删除flutter SDK文件夹目录下的bin&#x2F;cache下边的lockfile文件5rm .&#x2F;flutter&#x2F;bin&#x2F;cache&#x2F;lockf">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-28T09:59:17.957Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://lanxuexing.github.io/2019/05/25/flutter-issues/"/>
+
+
+  <title> Flutter 常见问题及其解决方案 | Hexo </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+            Schedule
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Flutter 常见问题及其解决方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-05-25T17:27:54+08:00" content="2019-05-25">
+              2019-05-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-Waiting-for-another-flutter-command-to-release-the-startup-lock…"><a href="#1-Waiting-for-another-flutter-command-to-release-the-startup-lock…" class="headerlink" title="1. Waiting for another flutter command to release the startup lock…"></a>1. Waiting for another flutter command to release the startup lock…</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">// 杀死dart进程</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">flutter packages pub build_runner watch</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">// 终极方案,删除flutter SDK文件夹目录下的bin/cache下边的lockfile文件</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">rm ./flutter/bin/cache/lockfile</span></pre></td></tr></table></figure>
+
+
+<h4 id="2-Could-not-find-a-file-named-“pubspec-yaml”-in-https-github-com-MarkOSullivan94-dart-config-git-7a88fbc5fd987dce78e468ec45e9e841a49f422d"><a href="#2-Could-not-find-a-file-named-“pubspec-yaml”-in-https-github-com-MarkOSullivan94-dart-config-git-7a88fbc5fd987dce78e468ec45e9e841a49f422d" class="headerlink" title="2. Could not find a file named “pubspec.yaml” in https://github.com/MarkOSullivan94/dart_config.git 7a88fbc5fd987dce78e468ec45e9e841a49f422d."></a>2. Could not find a file named “pubspec.yaml” in <a href="https://github.com/MarkOSullivan94/dart_config.git" target="_blank" rel="noopener">https://github.com/MarkOSullivan94/dart_config.git</a> 7a88fbc5fd987dce78e468ec45e9e841a49f422d.</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">// 删除flutter SDK文件夹目录下的.pub-cache下边的git文件夹</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">rm ./flutter/.pub-cache/git</span></pre></td></tr></table></figure>
+
+
+<h4 id="3-点击任意空白处，软键盘收起"><a href="#3-点击任意空白处，软键盘收起" class="headerlink" title="3.点击任意空白处，软键盘收起"></a>3.点击任意空白处，软键盘收起</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">GestureDetector(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">/// <span class="markdown">透明也响应处理</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    behavior: HitTestBehavior.translucent,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    onTap: () &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">      <span class="comment">/// <span class="markdown">触摸收起键盘</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">      FocusScope.of(context).requestFocus(FocusNode());</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    child: Container(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">       <span class="comment">/// <span class="markdown">xxx</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    ),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">);</span></pre></td></tr></table></figure>
+
+
+<h4 id="4-Oops-flutter-has-exited-unexpectedly-Sending-crash-report-to-Google"><a href="#4-Oops-flutter-has-exited-unexpectedly-Sending-crash-report-to-Google" class="headerlink" title="4. Oops; flutter has exited unexpectedly. Sending crash report to Google."></a>4. Oops; flutter has exited unexpectedly. Sending crash report to Google.</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/// <span class="markdown">在终端执行命令</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">xcode-select --install</span></pre></td></tr></table></figure>
+
+
+<h4 id="5-页面返回隐藏虚拟导航条"><a href="#5-页面返回隐藏虚拟导航条" class="headerlink" title="5. 页面返回隐藏虚拟导航条"></a>5. 页面返回隐藏虚拟导航条</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@override</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> deactivate() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    SystemChrome.restoreSystemUIOverlays();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">super</span>.deactivate();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+<h4 id="6-如果没有网络连接，如何启动静态html页面而不是URL-【webview】"><a href="#6-如果没有网络连接，如何启动静态html页面而不是URL-【webview】" class="headerlink" title="6. 如果没有网络连接，如何启动静态html页面而不是URL ?【webview】"></a>6. 如果没有网络连接，如何启动静态html页面而不是URL ?【webview】</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Future check() <span class="keyword">async</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">try</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">final</span> result = <span class="keyword">await</span> InternetAddress.lookup(<span class="string">'google.com'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">if</span> (result.isNotEmpty &amp;&amp; result[<span class="number">0</span>].rawAddress.isNotEmpty) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        connectionStatus = <span class="keyword">true</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">print</span>(<span class="string">"connected <span class="subst">$connectionStatus</span>"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    &#125; <span class="keyword">on</span> SocketException <span class="keyword">catch</span> (_) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      connectionStatus = <span class="keyword">false</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">      <span class="built_in">print</span>(<span class="string">"not connected <span class="subst">$connectionStatus</span>"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">FutureBuilder(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    future: check(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    builder: (BuildContext context, AsyncSnapshot&lt;<span class="built_in">dynamic</span>&gt; snapshot) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">if</span> (connectionStatus == <span class="keyword">true</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">/// <span class="markdown">如果网络正常连接</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> SafeArea(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">            child: WebviewScaffold(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">                url: <span class="string">"http://www.baidu.com"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">            ),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        ),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">      &#125; <span class="keyword">else</span> &#123; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">/// <span class="markdown">如果网络连接失败</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> SafeArea(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">            child: WebviewScaffold(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">              url: <span class="built_in">Uri</span>.dataFromString(<span class="string">'&lt;html&gt;&lt;body&gt;hello world&lt;/body&gt;&lt;/html&gt;'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">              mimeType: <span class="string">'text/html'</span>).toString()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">            ),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">        ),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">)</span></pre></td></tr></table></figure>
+
+
+<h4 id="7-判断当前路由是否在栈顶"><a href="#7-判断当前路由是否在栈顶" class="headerlink" title="7. 判断当前路由是否在栈顶"></a>7. 判断当前路由是否在栈顶</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// ModalRoute.of(context) API可以获取当前路由对象以及当前页面的所有属性</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果路由active，还位于最顶层，则isCurrent为true</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">ModalRoute.of(context).isCurrent</span></pre></td></tr></table></figure>
+
+<h4 id="8-B-widget嵌套在A-Widget里（两个Widget分别在不同的Class里），如何在B-Widget里获取A-Widget的数据（变量、state、方法等等）并修改呢？"><a href="#8-B-widget嵌套在A-Widget里（两个Widget分别在不同的Class里），如何在B-Widget里获取A-Widget的数据（变量、state、方法等等）并修改呢？" class="headerlink" title="8. B widget嵌套在A Widget里（两个Widget分别在不同的Class里），如何在B Widget里获取A Widget的数据（变量、state、方法等等）并修改呢？"></a>8. B widget嵌套在A Widget里（两个Widget分别在不同的Class里），如何在B Widget里获取A Widget的数据（变量、state、方法等等）并修改呢？</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  A(&#123;Key key&#125;) : <span class="keyword">super</span>(key: key);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  _AState createState() =&gt; _AState();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_AState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="comment">/// <span class="markdown">这个是A widget定义的一个变量</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> name = <span class="string">'Jerry'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">  <span class="comment">/// <span class="markdown">这个是B Widget里声明的方法</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">void</span> getName() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">/// <span class="markdown">TODO</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">  <span class="meta">@override</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">  Widget build(BuildContext context) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> Container(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">       <span class="comment">/// <span class="markdown">这里嵌套了B Widget</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">       child: B(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">  B(&#123;Key key&#125;) : <span class="keyword">super</span>(key: key);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">  _BState createState() =&gt; _BState();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_BState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">B</span>&gt; </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">  <span class="meta">@override</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">  Widget build(BuildContext context) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> Container(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">      child: InkWell(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">        child: Text(<span class="string">'this is B Widget!'</span>),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">        onTap: () &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">          setState(() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">/// <span class="markdown">在B Widget里边怎么获取A Widget的变量并修改呢？, 方案如下：</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">            _AState aWidgetState = context.ancestorStateOfType(TypeMatcher&lt;_AState&gt;());</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">/// <span class="markdown">获取A里的变量</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">            aWidgetState.name = <span class="string">'Anna'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">/// <span class="markdown">调用A里的方法</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">            aWidgetState.getName();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">          &#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">        &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">      ),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">    );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+<h4 id="9-B-widget嵌套在A-Widget里（两个Widget分别在不同的Class里），如何在A-Widget里获取B-Widget里的数据（变量、state、方法等等）呢？"><a href="#9-B-widget嵌套在A-Widget里（两个Widget分别在不同的Class里），如何在A-Widget里获取B-Widget里的数据（变量、state、方法等等）呢？" class="headerlink" title="9. B widget嵌套在A Widget里（两个Widget分别在不同的Class里），如何在A Widget里获取B Widget里的数据（变量、state、方法等等）呢？"></a>9. B widget嵌套在A Widget里（两个Widget分别在不同的Class里），如何在A Widget里获取B Widget里的数据（变量、state、方法等等）呢？</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  A(&#123;Key key&#125;) : <span class="keyword">super</span>(key: key);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  _AState createState() =&gt; _AState();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_AState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">final</span> GlobalKey&lt;_BState&gt; _bStateKey = GlobalKey();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  <span class="meta">@override</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  Widget build(BuildContext context) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">/// <span class="markdown">获取B里边的变量</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">print</span>(_bStateKey.currentState.name);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">/// <span class="markdown">调用B里边的方法</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    _bStateKey.currentState.getName();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> Container(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">       child: B(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">  B(&#123;Key key&#125;) : <span class="keyword">super</span>(key: key);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">  _BState createState() =&gt; _BState();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_BState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">B</span>&gt; </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">  <span class="comment">/// <span class="markdown">这个是B Widget里声明的变量</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> name = <span class="string">'Jerry'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">  <span class="comment">/// <span class="markdown">这个是B Widget里声明的方法</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">void</span> getName() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">/// <span class="markdown">TODO</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">  <span class="meta">@override</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">  Widget build(BuildContext context) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> Container(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">       child: Text(<span class="string">'This is B Widget!'</span>),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">    );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+<h4 id="10-Exception-ideviceinfo-return-an-error-ERROR-Could-not-connect-to-lockdownd-error-code-17-或者-21"><a href="#10-Exception-ideviceinfo-return-an-error-ERROR-Could-not-connect-to-lockdownd-error-code-17-或者-21" class="headerlink" title="10. Exception: ideviceinfo return an error: ERROR: Could not connect to lockdownd, error code -17(或者-21)"></a>10. Exception: ideviceinfo return an error: ERROR: Could not connect to lockdownd, error code -17(或者-21)</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下两种方式可供使用：</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 如果你的设备上连接有真机，用的模拟器测试，拔掉手机手机的USB线，再试试运行到模拟器。</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="number">2.</span> 断开设备，在终端窗口中，键入：sudo pkill usbmuxd（它将自动重新启动），再次连接设备</span></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flutter/" rel="tag">#flutter</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/20/ng-custom-route-reuse-strategy/" rel="next" title="Angular自定义路由复用策略，返回上一个页面页面保持">
+                <i class="fa fa-chevron-left"></i> Angular自定义路由复用策略，返回上一个页面页面保持
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/05/rxjs-version/" rel="prev" title="Rxjs6都改变了些什么？">
+                Rxjs6都改变了些什么？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Waiting-for-another-flutter-command-to-release-the-startup-lock…"><span class="nav-number">1.</span> <span class="nav-text">1. Waiting for another flutter command to release the startup lock…</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Could-not-find-a-file-named-“pubspec-yaml”-in-https-github-com-MarkOSullivan94-dart-config-git-7a88fbc5fd987dce78e468ec45e9e841a49f422d"><span class="nav-number">2.</span> <span class="nav-text">2. Could not find a file named “pubspec.yaml” in https://github.com/MarkOSullivan94/dart_config.git 7a88fbc5fd987dce78e468ec45e9e841a49f422d.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-点击任意空白处，软键盘收起"><span class="nav-number">3.</span> <span class="nav-text">3.点击任意空白处，软键盘收起</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Oops-flutter-has-exited-unexpectedly-Sending-crash-report-to-Google"><span class="nav-number">4.</span> <span class="nav-text">4. Oops; flutter has exited unexpectedly. Sending crash report to Google.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-页面返回隐藏虚拟导航条"><span class="nav-number">5.</span> <span class="nav-text">5. 页面返回隐藏虚拟导航条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-如果没有网络连接，如何启动静态html页面而不是URL-【webview】"><span class="nav-number">6.</span> <span class="nav-text">6. 如果没有网络连接，如何启动静态html页面而不是URL ?【webview】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-判断当前路由是否在栈顶"><span class="nav-number">7.</span> <span class="nav-text">7. 判断当前路由是否在栈顶</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-B-widget嵌套在A-Widget里（两个Widget分别在不同的Class里），如何在B-Widget里获取A-Widget的数据（变量、state、方法等等）并修改呢？"><span class="nav-number">8.</span> <span class="nav-text">8. B widget嵌套在A Widget里（两个Widget分别在不同的Class里），如何在B Widget里获取A Widget的数据（变量、state、方法等等）并修改呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-B-widget嵌套在A-Widget里（两个Widget分别在不同的Class里），如何在A-Widget里获取B-Widget里的数据（变量、state、方法等等）呢？"><span class="nav-number">9.</span> <span class="nav-text">9. B widget嵌套在A Widget里（两个Widget分别在不同的Class里），如何在A Widget里获取B Widget里的数据（变量、state、方法等等）呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-Exception-ideviceinfo-return-an-error-ERROR-Could-not-connect-to-lockdownd-error-code-17-或者-21"><span class="nav-number">10.</span> <span class="nav-text">10. Exception: ideviceinfo return an error: ERROR: Could not connect to lockdownd, error code -17(或者-21)</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lee/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lee/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lee/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lee/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lee/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lee/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

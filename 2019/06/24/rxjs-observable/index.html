@@ -1,0 +1,595 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lee/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lee/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="rxjs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Observable创建的方式Rxjs库已经内置支持了很多操作符，所以我们只需要理解并使用即可1、create从任何形式创建一个Observable，静态方法，可以直接使用。1&#x2F;&#x2F; 1. 创建Observable2const myObservable &#x3D; Observable.create((observer) &#x3D;&amp;gt; &amp;#123;3    observer.next(&amp;apos;Vivian&amp;apos;);4">
+<meta name="keywords" content="rxjs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rxjs【Observable】">
+<meta property="og:url" content="http:&#x2F;&#x2F;lanxuexing.github.io&#x2F;2019&#x2F;06&#x2F;24&#x2F;rxjs-observable&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Observable创建的方式Rxjs库已经内置支持了很多操作符，所以我们只需要理解并使用即可1、create从任何形式创建一个Observable，静态方法，可以直接使用。1&#x2F;&#x2F; 1. 创建Observable2const myObservable &#x3D; Observable.create((observer) &#x3D;&amp;gt; &amp;#123;3    observer.next(&amp;apos;Vivian&amp;apos;);4">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-28T10:01:37.610Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://lanxuexing.github.io/2019/06/24/rxjs-observable/"/>
+
+
+  <title> Rxjs【Observable】 | Hexo </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+            Schedule
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Rxjs【Observable】
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-06-24T21:44:01+08:00" content="2019-06-24">
+              2019-06-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <pre><code>Observable创建的方式Rxjs库已经内置支持了很多操作符，所以我们只需要理解并使用即可</code></pre><h4 id="1、create"><a href="#1、create" class="headerlink" title="1、create"></a>1、create</h4><pre><code>从任何形式创建一个Observable，静态方法，可以直接使用。</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 创建Observable</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myObservable = Observable.create(<span class="function">(<span class="params">observer</span>) =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    observer.next(<span class="string">'Vivian'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    observer.next(<span class="string">'Jeanne'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        observer.next(<span class="string">'====create rxjs！'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    &#125;, <span class="number">2000</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    observer.complete();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    observer.next(<span class="string">'not work ?'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种写法</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'===1====start'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">myObservable.subscribe(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">console</span>.log(<span class="string">'1. 创建Observable: '</span>, value);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'===1====end'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第二种写法</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> innerObserver = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'2. 创建Observable: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'2. 创建Observable--Error'</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'2.创建Observable: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'===2====start'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">myObservable.subscribe(innerObserver);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'===2====end'</span>);</span></pre></td></tr></table></figure>
+
+
+<h4 id="2、of"><a href="#2、of" class="headerlink" title="2、of"></a>2、of</h4><pre><code>从任意形式创建同步的Observable</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> syncObservable = of(<span class="string">'Vivian'</span>, <span class="string">'Jeanne'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">syncObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'=====一次同步传递值: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'=====一次同步传递值--Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'=====一次同步传递值: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+
+
+<h4 id="3、from"><a href="#3、from" class="headerlink" title="3、from"></a>3、from</h4><pre><code>从已经存在的数组或者Promise、字符串、对象等创建Observable</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种：来自数组的Observable</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> existArray = [<span class="string">'Vivian'</span>, <span class="string">'Jeanne'</span>, <span class="string">'2019'</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> existObservable = <span class="keyword">from</span>(existArray);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">existObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======从已存在的数组生成Observable: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======从已存在的阵列生成Observable---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======从已存在的数组生成Observable: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第二种：来自Promise的Observable</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promiseObservable = <span class="keyword">from</span>(<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        resolve(<span class="string">'Hello RXJS!'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    &#125;, <span class="number">3000</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">&#125;));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">promiseObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======来自Promise的Observable: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======来自Promise的Observable---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======来自Promise的Observable: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+
+<h4 id="4、fromEvent"><a href="#4、fromEvent" class="headerlink" title="4、fromEvent"></a>4、fromEvent</h4><pre><code>从事件（DOM事件等）创建Observable</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种：FromEvent Observable 来自DOM事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fromEventObservable = fromEvent(<span class="built_in">document</span>.getElementById(<span class="string">'fromEvent'</span>), <span class="string">'click'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">fromEventObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======FromEvent Observable: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======FromEvent Observable---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======FromEvent Observable: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第二种：FromEventPattern Observable 来自类事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> producer = <span class="keyword">new</span> Producer();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fromEventPatternObservable = fromEventPattern(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    (handler) =&gt; producer.addEventListener(handler),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    (handler) =&gt; producer.removeEventListener(handler)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">fromEventPatternObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======FromEventPattern Observable: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======FromEventPattern Observable---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======FromEventPattern Observable: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">producer.notify(<span class="string">'Hello! Can you hear me?'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义Observable【类事件】</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Producer &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    listener: <span class="built_in">any</span>[];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">this</span>.listener = [];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">    addEventListener(listener) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> listener === <span class="string">'function'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">this</span>.listener.push(listener);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">        &#125; <span class="keyword">else</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'listener 必须是 function!'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">    removeEventListener(listener) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">this</span>.listener.splice(<span class="keyword">this</span>.listener.indexOf(listener), <span class="number">1</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">    notify(message) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">this</span>.listener.forEach(<span class="function"><span class="params">listener</span> =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">            listener(message);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">        &#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+<h4 id="5、empty"><a href="#5、empty" class="headerlink" title="5、empty"></a>5、empty</h4><pre><code>啥也不干直接让Observable执行complete()结束，类似于数学上的0</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> emptyObservable = empty();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">emptyObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======empty Observable: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======empty Observable---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======empty Observable: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+
+
+<h4 id="6、never"><a href="#6、never" class="headerlink" title="6、never"></a>6、never</h4><pre><code>永远也不会执行complete()结束的Observable，类似于数学上的无穷大∞</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> neverObservable = never();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">neverObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======never Observable: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======never Observable---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======never Observable: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+
+
+<h4 id="7、interval"><a href="#7、interval" class="headerlink" title="7、interval"></a>7、interval</h4><pre><code>定时器，每隔一定时间送出一个元素</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> intervalObservable = interval(<span class="number">1000</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">intervalObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======interval Observable: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======interval Observable---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======interval Observable: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+
+
+<h4 id="8、timer"><a href="#8、timer" class="headerlink" title="8、timer"></a>8、timer</h4><pre><code>延时定时器</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// timer Observable延时定时器</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> timerObservable = timer(<span class="number">1000</span>, <span class="number">5000</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">timerObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// timer Observable延时定时器【指定日期之后开始执行】</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> timerFromDateObservable = timer(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2019-05-26 23:22:00'</span>));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">timerFromDateObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器【指定日期之后开始执行】: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器【指定日期之后开始执行】---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器【指定日期之后开始执行】: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// timer Observable延时定时器, 延迟毫秒执行一次之后取消订阅</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> onceTimerObservable = timer(<span class="number">3000</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">onceTimerObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器, 延迟毫秒执行一次之后取消订阅: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器, 延迟毫秒执行一次之后取消订阅---Error: '</span>, error); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'======timer Observable延时定时器, 延迟毫秒执行一次之后取消订阅: complete'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+
+
+<hr>
+<h4 id="Marble-Diagrams【宝珠图】"><a href="#Marble-Diagrams【宝珠图】" class="headerlink" title="Marble Diagrams【宝珠图】"></a>Marble Diagrams【宝珠图】</h4><pre><code>1. 这个Marble Diagrams【宝珠图】可以很灵活的表现出每个操作符的使用
+2. 下面是超链接传送门</code></pre><p><a href="https://rxmarbles.com/" target="_blank" rel="noopener">Marble Diagrams【宝珠图】</a></p>
+<h4 id="Angular-Rxjs-Series"><a href="#Angular-Rxjs-Series" class="headerlink" title="Angular Rxjs Series"></a>Angular Rxjs Series</h4><ol>
+<li><a href="https://www.jianshu.com/p/ce1a15957a7f" target="_blank" rel="noopener">Rxjs6都改变了些什么？</a></li>
+<li><a href="https://www.jianshu.com/p/b81a5ad72641" target="_blank" rel="noopener">Rxjs【map、mapTo、filter】</a></li>
+<li><a href="https://www.jianshu.com/p/55b6df31cc3e" target="_blank" rel="noopener">Rxjs【take, first, takeUntil, concatAll】</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rxjs/" rel="tag">#rxjs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/23/rxjs-skip-takeLast-last-concat-startWith-merge/" rel="next" title="Rxjs【skip, takeLast, last, concat, startWith, merge】">
+                <i class="fa fa-chevron-left"></i> Rxjs【skip, takeLast, last, concat, startWith, merge】
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/25/rxjs-take-first-takeUnitl-concatAll/" rel="prev" title="Rxjs【take, first, takeUntil, concatAll】">
+                Rxjs【take, first, takeUntil, concatAll】 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、create"><span class="nav-number">1.</span> <span class="nav-text">1、create</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、of"><span class="nav-number">2.</span> <span class="nav-text">2、of</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、from"><span class="nav-number">3.</span> <span class="nav-text">3、from</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、fromEvent"><span class="nav-number">4.</span> <span class="nav-text">4、fromEvent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、empty"><span class="nav-number">5.</span> <span class="nav-text">5、empty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、never"><span class="nav-number">6.</span> <span class="nav-text">6、never</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、interval"><span class="nav-number">7.</span> <span class="nav-text">7、interval</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、timer"><span class="nav-number">8.</span> <span class="nav-text">8、timer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Marble-Diagrams【宝珠图】"><span class="nav-number">9.</span> <span class="nav-text">Marble Diagrams【宝珠图】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Angular-Rxjs-Series"><span class="nav-number">10.</span> <span class="nav-text">Angular Rxjs Series</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lee/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lee/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lee/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lee/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lee/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lee/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
