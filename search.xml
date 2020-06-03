@@ -32,7 +32,7 @@ the cdk is the box of engine parts.</code>，如果组件库是火箭飞船，<b
 </li>
 </ul>
 <h4 id="3-Accessibility"><a href="#3-Accessibility" class="headerlink" title="3. Accessibility"></a>3. Accessibility</h4><h6 id="1-FocusTrap"><a href="#1-FocusTrap" class="headerlink" title="1. FocusTrap"></a>1. FocusTrap</h6><p>FocusTrap是一个指令，它用于捕获元素中的Tab键焦点，常用于我们的表单里，可能说的比较模式，可以直接看下图的演示效果。</p>
-<video controls preload="none">
+<video controls preload="none" poster="https://github.com/lanxuexing/assets/raw/master/cdk/demo.png">
       <source src="https://github.com/lanxuexing/assets/raw/master/cdk/focus-trap.mov">
       <p>Your user agent does not support the HTML5 Video element.</p>
 </video>
