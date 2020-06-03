@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -24,8 +24,8 @@
     version: '7.5.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -42,9 +42,9 @@
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     },
     sidebarPadding: 40
   };
@@ -56,7 +56,7 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;lanxuexing.github.io&#x2F;page&#x2F;3&#x2F;index.html">
 <meta property="og:site_name" content="Sunny Bottle">
 <meta property="og:description" content="love digging into the internals of frontend. always trying to reach the next level.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://lanxuexing.github.io/page/3/">
@@ -124,7 +124,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -138,26 +138,26 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
@@ -171,7 +171,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="Searching..." spellcheck="false"
+           placeholder="搜索..." spellcheck="false"
            type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
@@ -208,7 +208,787 @@
         
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/06/23/rxjs-skip-takeLast-last-concat-startWith-merge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/23/rxjs-skip-takeLast-last-concat-startWith-merge/" class="post-title-link" itemprop="url">Rxjs【skip, takeLast, last, concat, startWith, merge】</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-23 21:19:57" itemprop="dateCreated datePublished" datetime="2019-06-23T21:19:57+08:00">2019-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 18:01:11" itemprop="dateModified" datetime="2019-11-28T18:01:11+08:00">2019-11-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Rxjs学习之路"><a href="#Rxjs学习之路" class="headerlink" title="Rxjs学习之路"></a>Rxjs学习之路</h1><h4 id="1、小贴士"><a href="#1、小贴士" class="headerlink" title="1、小贴士"></a>1、小贴士</h4><p>这篇文章是我的Angular Rxjs Series中的第篇四文章，在继续阅读本文之前，您至少应该熟悉系列中的第一篇基础文章：</p><p><a href="https://www.jianshu.com/p/ce1a15957a7f" target="_blank" rel="noopener">Rxjs6都改变了些什么？</a></p><p><a href="https://www.jianshu.com/p/fc0e30328de3" target="_blank" rel="noopener">Rxjs【Observable】</a></p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图谱</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// ----- 代表一个Observable</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// -----X 代表一个Observable有错误发生</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// -----| 代表一个Observable结束</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// (1234)| 代表一个同步Observable结束</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 特别提示：以下的操作符介绍均采用rxjs6的写法！！！</span></span></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/23/rxjs-skip-takeLast-last-concat-startWith-merge/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/06/23/git-github-search/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/23/git-github-search/" class="post-title-link" itemprop="url">Github检索方法总结</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-23 19:14:32" itemprop="dateCreated datePublished" datetime="2019-06-23T19:14:32+08:00">2019-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-02 14:12:06" itemprop="dateModified" datetime="2019-12-02T14:12:06+08:00">2019-12-02</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>926</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1、in-name-关键词"><a href="#1、in-name-关键词" class="headerlink" title="1、in:name 关键词"></a>1、in:name 关键词</h4><pre><code>1. 这里的name是指仓库的名称
+2. 例如在检索栏里输入：in:name ng toast</code></pre><h4 id="2、in-description-关键词"><a href="#2、in-description-关键词" class="headerlink" title="2、in:description 关键词"></a>2、in:description 关键词</h4><pre><code>1. 这里的description是仓库的描述文字
+2. 例如在检索栏里输入：in:description angular calendar</code></pre><h4 id="3、in-readme-关键词"><a href="#3、in-readme-关键词" class="headerlink" title="3、in:readme 关键词"></a>3、in:readme 关键词</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/23/git-github-search/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/06/19/rxjs-map-mapto-filter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/19/rxjs-map-mapto-filter/" class="post-title-link" itemprop="url">Rxjs【map、mapTo、filter】</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-19 17:31:22" itemprop="dateCreated datePublished" datetime="2019-06-19T17:31:22+08:00">2019-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 18:00:30" itemprop="dateModified" datetime="2019-11-28T18:00:30+08:00">2019-11-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Rxjs学习之路"><a href="#Rxjs学习之路" class="headerlink" title="Rxjs学习之路"></a>Rxjs学习之路</h1><h4 id="1、小贴士"><a href="#1、小贴士" class="headerlink" title="1、小贴士"></a>1、小贴士</h4><p>这篇文章是我的Angular Rxjs Series中的第二篇文章，在继续阅读本文之前，您至少应该熟悉系列中的第一篇基础文章：</p><p><a href="https://www.jianshu.com/p/ce1a15957a7f" target="_blank" rel="noopener">Rxjs6都改变了些什么？</a></p><p><a href="https://www.jianshu.com/p/fc0e30328de3" target="_blank" rel="noopener">Rxjs【Observable】</a></p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图谱</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// ----- 代表一个Observable</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// -----X 代表一个Observable有错误发生</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// -----| 代表一个Observable结束</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// (1234)| 代表一个同步Observable结束</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 特别提示：以下的操作符介绍均采用rxjs6的写法！！！</span></span></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/19/rxjs-map-mapto-filter/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/06/05/rxjs-version/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/05/rxjs-version/" class="post-title-link" itemprop="url">Rxjs6都改变了些什么？</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-05 18:13:13" itemprop="dateCreated datePublished" datetime="2019-06-05T18:13:13+08:00">2019-06-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 17:59:43" itemprop="dateModified" datetime="2019-11-28T17:59:43+08:00">2019-11-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="RxJS-6变化-概述"><a href="#RxJS-6变化-概述" class="headerlink" title="RxJS 6变化-概述"></a>RxJS 6变化-概述</h1><pre><code>RxJS 6主要用于Angular应用程序，从Angular 6开始，它是一个强制依赖。
+
+与RxJS版本5相比，RxJS 6（或更高版本）引入了两个重要更改：
+1. import的导入结构发生变化
+2. pipe()作为一种链接运算符的方法，旧的链接方式将不起作用
+3. 一些operator操作符被重命名
+
+特别提示： 如果你让旧的代码仍旧继续使用，你需要进行以下操作（不推荐再用旧的方法了）
+npm install --save rxjs-compat  // 安装向后兼容依赖包</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/05/rxjs-version/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/05/25/flutter-issues/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/25/flutter-issues/" class="post-title-link" itemprop="url">Flutter 常见问题及其解决方案</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-25 17:27:54" itemprop="dateCreated datePublished" datetime="2019-05-25T17:27:54+08:00">2019-05-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 17:59:17" itemprop="dateModified" datetime="2019-11-28T17:59:17+08:00">2019-11-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-Waiting-for-another-flutter-command-to-release-the-startup-lock…"><a href="#1-Waiting-for-another-flutter-command-to-release-the-startup-lock…" class="headerlink" title="1. Waiting for another flutter command to release the startup lock…"></a>1. Waiting for another flutter command to release the startup lock…</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">// 杀死dart进程</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">flutter packages pub build_runner watch</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">// 终极方案,删除flutter SDK文件夹目录下的bin/cache下边的lockfile文件</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">rm ./flutter/bin/cache/lockfile</span></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/05/25/flutter-issues/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/04/20/ng-custom-route-reuse-strategy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/20/ng-custom-route-reuse-strategy/" class="post-title-link" itemprop="url">Angular自定义路由复用策略，返回上一个页面页面保持</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-20 16:48:44" itemprop="dateCreated datePublished" datetime="2019-04-20T16:48:44+08:00">2019-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 17:58:57" itemprop="dateModified" datetime="2019-11-28T17:58:57+08:00">2019-11-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们都知道在Angular的SPA应用中，应用通过路由在各个页面之间进行导航。 默认情况下，用户在离开一个页面时，这个页面(组件)会被Angular销毁，用户的输入信息也随之丢失，当用户再次进入这个页面时，看到的是一个新生成的页面(组件)，之前的输入信息都没了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在实际工作中遇到了这样的问题，部分页面需要保存用户的输入信息，用户再次进入页面时需要回到上一次离开时的状态，部分页面每次都要刷新页面，不需要保存用户信息。而页面间的导航正是通过路由实现的，Angular的默认行为不能满足我们的需求！好在Angular提供了RouteReuseStrategy接口，通过实现这个接口，我们就可以自定义路由复用策略。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具体的实现如下：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/20/ng-custom-route-reuse-strategy/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/04/19/ng-forms-valid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/19/ng-forms-valid/" class="post-title-link" itemprop="url">angular表单校验</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-19 16:21:31" itemprop="dateCreated datePublished" datetime="2019-04-19T16:21:31+08:00">2019-04-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-02 14:12:06" itemprop="dateModified" datetime="2019-12-02T14:12:06+08:00">2019-12-02</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近在写项目的时候，产品要求对表单的必填输入项进行友好的校验提示，效果如图：</p><html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-714366d7491a42fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html><p>“ 这个需求很简单，怎么实现我不管。 “ ，还能说什么，就是干，具体实现如下：</p><ol>
+<li><p>对Angular内置的表单css属性设置想要的样式</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// css样式</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.isvalid</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> dashed red <span class="meta">!important</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+</li>
+<li><p>html文件里设置即时样式检测<code>[class.isvalid]</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--非formArray--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">formControlName</span>=<span class="string">"addressName [class.isvalid]="</span><span class="attr">isFieldInvalidTouched</span>('<span class="attr">addressName</span>')" <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入收件人姓名"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--formArray--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">formControlName</span>=<span class="string">"addressName [class.isvalid]="</span><span class="attr">isArrayFieldInvalidTouched</span>(<span class="attr">i</span>, '<span class="attr">addressName</span>')" <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入收件人姓名"</span>&gt;</span></span></pre></td></tr></table></figure>
+</li>
+<li><p>ts文件里注入核心方法</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 表单字段校验</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">validateAllFormFields(formGroup: <span class="built_in">any</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">Object</span>.keys(formGroup.controls).forEach(<span class="function"><span class="params">field</span> =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">const</span> control = formGroup.get(field);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">if</span> (control <span class="keyword">instanceof</span> FormControl) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">          control.markAsTouched(&#123; onlySelf: <span class="literal">true</span> &#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (control <span class="keyword">instanceof</span> FormGroup) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">          <span class="keyword">this</span>.validateAllFormFields(control);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (control <span class="keyword">instanceof</span> FormArray) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">          <span class="keyword">this</span>.validateAllFormFields(control);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    &#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"> &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 表单控件校验</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">isFieldInvalidTouched(field: <span class="built_in">any</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.form.get(field).invalid &amp;&amp; <span class="keyword">this</span>.form.get(field).touched;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 表单控件校验</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">isArrayFieldInvalidTouched(index, field: <span class="built_in">any</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.xxxArray.controls[index].get(field).invalid &amp;&amp;<span class="keyword">this</span>.xxxArray.controls[index].get(field).touched;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取FormArray</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> xxxArray(): FormArray &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.form.get(<span class="string">'xxxArray'</span>) <span class="keyword">as</span> FormArray;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置FormArray</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> setXxxArray() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// TODO</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 表单提交</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">ensure() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.form.valid) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">this</span>.validateAllFormFields(<span class="keyword">this</span>.form);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">this</span>.orderService.presentToast(<span class="string">'表单信息不全, 请填写完整～'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">    &#125; <span class="keyword">else</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// TODO</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure></li>
+</ol>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/04/18/css-white-space/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/18/css-white-space/" class="post-title-link" itemprop="url">css保留空格和换行符</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-18 15:14:38" itemprop="dateCreated datePublished" datetime="2019-04-18T15:14:38+08:00">2019-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 17:57:43" itemprop="dateModified" datetime="2019-11-28T17:57:43+08:00">2019-11-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>151</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近写项目遇到接收后台数据（带格式的字符串），前端显示的时候，要保留其空格和换行符的问题，自己查找了半天，具体实现方式如下，希望能帮到其他也遇到同样问题的小伙伴吧。</p><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// css保留空格和换行符</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">white-space</span>: pre-wrap;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// css保留换行符</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">white-space</span>: pre-line;</span></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/04/18/ngx-datatable-sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/18/ngx-datatable-sort/" class="post-title-link" itemprop="url">ngx-datatable排序图标</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-18 14:48:12" itemprop="dateCreated datePublished" datetime="2019-04-18T14:48:12+08:00">2019-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 17:57:13" itemprop="dateModified" datetime="2019-11-28T17:57:13+08:00">2019-11-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>848</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>給ngx-datatable设置css属性</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">/deep/ .ngx-datatable&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="selector-class">.sortable</span> <span class="selector-class">.sort-btn</span>:before &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="attribute">font-family</span>: data-table;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="attribute">content</span>: <span class="string">"c"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="selector-class">.sortable</span> <span class="selector-class">.sort-btn</span><span class="selector-class">.datatable-icon-down</span>:before &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="attribute">content</span>: <span class="string">"f"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="selector-class">.sortable</span> <span class="selector-class">.sort-btn</span><span class="selector-class">.datatable-icon-up</span>:before &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="attribute">content</span>: <span class="string">"e"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+</li>
+<li><p>如果某一列不需要排序，则可设置sortable为false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;ngx-datatable #datatable&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;ngx-datatable-column prop&#x3D;&quot;name&quot; name&#x3D;&quot;name&quot;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        &lt;ng-template let-row&#x3D;&quot;row&quot; let-value&#x3D;&quot;value&quot; ngx-datatable-cell-template [sortable]&#x3D;&quot;false&quot;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            &lt;span *ngIf&#x3D;&quot;value&quot;&gt;&#123;&#123;value&#125;&#125;&lt;&#x2F;span&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        &lt;&#x2F;ng-template&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &lt;&#x2F;ngx-datatable-column&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&lt;&#x2F;&lt;ngx-datatable&gt;</span></pre></td></tr></table></figure>
+</li>
+<li><p>检索条件重置的时候重置Icon和排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">@ViewChild(&#39;datatable&#39;) datatable: DatatableComponent;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">this.datatable.sorts &#x3D; [];</span></pre></td></tr></table></figure></li>
+</ol>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/04/14/ng-agent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -231,32 +1011,32 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2019-04-14 17:34:33" itemprop="dateCreated datePublished" datetime="2019-04-14T17:34:33+08:00">2019-04-14</time>
+              <time title="创建时间：2019-04-14 17:34:33" itemprop="dateCreated datePublished" datetime="2019-04-14T17:34:33+08:00">2019-04-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 18:00:09" itemprop="dateModified" datetime="2019-11-28T18:00:09+08:00">2019-11-28</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-02 14:12:06" itemprop="dateModified" datetime="2019-12-02T14:12:06+08:00">2019-12-02</time>
               </span>
 
           <br>
-            <span class="post-meta-item" title="Symbols count in article">
+            <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
+                <span class="post-meta-item-text">本文字数：</span>
               <span>3.1k</span>
             </span>
-            <span class="post-meta-item" title="Reading time">
+            <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>3 mins.</span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -272,838 +1052,15 @@
 
 2. 在Angular中，我们经常在开发环境中使用代理。Angular使用的是webpack dev server在开发模式下（development environment）为应用程序提供服务。
 
-3. 例如下图：我们前端的Angular应用程序运行在4200端口上，而后端服务器运行在3700端口，所有以/api开头的接口调用都会通过代理重定向到后端服务器，并且所有调用都reset到同一端口。</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/8303589-85a2bb75e9ca7710.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代理所有URL以 /api 开头的接口"></p>
-<h4 id="3、proxy-conf-json"><a href="#3、proxy-conf-json" class="headerlink" title="3、proxy.conf.json"></a>3、proxy.conf.json</h4><pre><code>在配置代理之前我们需要先了解一下代理相关的配置项：
-
-1. target：定义后端URL
-2. pathRewrite：重写路径
-3. changeOrigin：如果后端API没有在localhost上运行，则需要将此选项设置为true
-4. logLevel：如果要检查代理配置是否正常工作，此选项设置为debug
-5. bypass：有时我们必须绕过代理，可以用这个定义一个函数。但它应该在proxy.conf.js而不是proxy.conf.json中定义。（下面会有详细讲解）</code></pre><h4 id="4、使用Angular-CLI进行代理设置"><a href="#4、使用Angular-CLI进行代理设置" class="headerlink" title="4、使用Angular CLI进行代理设置"></a>4、使用Angular CLI进行代理设置</h4><ul>
-<li>首先需要在项目根目录下建立文件：proxy.conf.json</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"/api/*"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"target"</span>: <span class="string">"http://localhost:3700"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"secure"</span>: <span class="literal">false</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"logLevel"</span>: <span class="string">"debug"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"changeOrigin"</span>: <span class="literal">true</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<ul>
-<li>然后在package.json中进行配置，让Angular找到我们配置好的<code>proxy.conf.json</code>文件【第一种方法】</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"scripts"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"ng"</span>: <span class="string">"ng"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"start"</span>: <span class="string">"ng serve --proxy-config proxy.conf.json"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"build"</span>: <span class="string">"ng build"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"test"</span>: <span class="string">"ng test"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"lint"</span>: <span class="string">"ng lint"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"e2e"</span>: <span class="string">"ng e2e"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<ul>
-<li>让Angular找到我们配置好的<code>proxy.conf.json</code>文件【第二种方法】</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"serve"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"builder"</span>: <span class="string">"@angular-devkit/build-angular:dev-server"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"options"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            <span class="attr">"browserTarget"</span>: <span class="string">"api:build"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">            <span class="attr">"proxyConfig"</span>: <span class="string">"proxy.conf.json"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">"configurations"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">            <span class="attr">"production"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">                <span class="attr">"browserTarget"</span>: <span class="string">"api:build:production"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<ul>
-<li>最后，启动项目，访问接口啦-_-#</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">// <span class="number">1</span>. 终端运行命令</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">npm start</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">// <span class="number">2</span>. 访问Angular项目</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">http://localhos<span class="variable">t:4200</span></span></pre></td></tr></table></figure>
-
-
-<h4 id="5、思考一"><a href="#5、思考一" class="headerlink" title="5、思考一"></a>5、思考一</h4><pre><code>当有一天后端接口地址发生了变化，例如：/api/settings 变成了 /api/app/settings ，这个时候我们前端人员也需要进行相应的修改，可能有改很多地方，那么有没有一种简便的办法一劳永逸呢？答案是肯定的，这个时候proxy.conf.json文件的pathRewrite选项就派上用场了。</code></pre><ul>
-<li><p>proxy.conf.json修改如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"/api/*"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"target"</span>: <span class="string">"http://localhost:3700"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"secure"</span>: <span class="literal">false</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"logLevel"</span>: <span class="string">"debug"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"changeOrigin"</span>: <span class="literal">true</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"pathRewrite"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">      <span class="attr">"^/api/settings"</span>: <span class="string">"/api/app/settings"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      <span class="attr">"^/api"</span>: <span class="string">""</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-</li>
-<li><p>修改完成之后重启</p>
-</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">// <span class="number">1</span>. 终端运行命令</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">npm start</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">// <span class="number">2</span>. 访问Angular项目</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">http://localhos<span class="variable">t:4200</span></span></pre></td></tr></table></figure>
-
-
-<h4 id="6、思考二"><a href="#6、思考二" class="headerlink" title="6、思考二"></a>6、思考二</h4><pre><code>项目里有很多个模块要访问很多模块下的接口，这个时候我们的proxy.conf.json文件重复的代码就变得很多了，这个时候有没有简便一点的重构方法呢？答案仍旧是肯定的，这个时候就要用到前面我们提到过的proxy.conf.js了而不是proxy.conf.json。</code></pre><ul>
-<li>proxy.conf.js</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PROXY_CONFIG = [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        context: [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            <span class="string">"/api"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            <span class="string">"/userapi"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">            <span class="string">"/settingsapi"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            <span class="string">"/productapi"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        target: <span class="string">"http://localhost:3700"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        secure: <span class="literal">false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = PROXY_CONFIG;</span></pre></td></tr></table></figure>
-
-<ul>
-<li>同样的，我们也需要在angular.json文件里进行配置，让Angular找到我们的<code>proxy.conf.js</code>配置文件</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"serve"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">          <span class="attr">"builder"</span>: <span class="string">"@angular-devkit/build-angular:dev-server"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">          <span class="attr">"options"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            <span class="attr">"browserTarget"</span>: <span class="string">"api:build"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">            <span class="attr">"proxyConfig"</span>: <span class="string">"proxy.conf.js"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">          &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">          <span class="attr">"configurations"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">            <span class="attr">"production"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">              <span class="attr">"browserTarget"</span>: <span class="string">"api:build:production"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">          &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<ul>
-<li>修改完成之后重启</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">// <span class="number">1</span>. 终端运行命令</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">npm start</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">// <span class="number">2</span>. 访问Angular项目</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">http://localhos<span class="variable">t:4200</span></span></pre></td></tr></table></figure>
-
-
-<h4 id="7、思考三"><a href="#7、思考三" class="headerlink" title="7、思考三"></a>7、思考三</h4><pre><code>现实开发中我们与服务器交互的过程中可能还会涉及到跨多个服务器去请求数据，这个时候我们的项目中就需要调用好几个服务器的地址（协议、端口、IP不一样），这个时候我们该怎么办呢？机灵的小伙伴估计已经想到了，那就是在proxy.conf.json里配置多条就可以了。</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/8303589-fd8b3a15b32c763d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代理多个API"></p>
-<ul>
-<li>proxy.conf.json</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">"/user/*"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"target"</span>: <span class="string">"http://localhost:3700"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"secure"</span>: <span class="literal">false</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"logLevel"</span>: <span class="string">"debug"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">"/product/*"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"target"</span>: <span class="string">"http://localhost:3800"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"secure"</span>: <span class="literal">false</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"logLevel"</span>: <span class="string">"debug"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">  &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">"/settings/*"</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"target"</span>: <span class="string">"http://localhost:3900"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"secure"</span>: <span class="literal">false</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">"logLevel"</span>: <span class="string">"debug"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<h4 id="特别声明"><a href="#特别声明" class="headerlink" title="特别声明"></a>特别声明</h4><p>文章出自medium，我进行了一下翻译和总结，如果想查看原文的，可以通过以下链接进行查看：</p>
-<p><a href="https://medium.com/bb-tutorials-and-thoughts/angular-how-to-proxy-to-backend-server-6fb37ef0d025" target="_blank" rel="noopener">Angular — How To Proxy To Backend Server</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+3. 例如下图：我们前端的Angular应用程序运行在4200端口上，而后端服务器运行在3700端口，所有以/api开头的接口调用都会通过代理重定向到后端服务器，并且所有调用都reset到同一端口。</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/14/ng-agent/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/03/28/mac-iTunes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/28/mac-iTunes/" class="post-title-link" itemprop="url">iTunes 未能连接到此 iPhone。 无法分配资源。</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-28 22:55:39" itemprop="dateCreated datePublished" datetime="2019-03-28T22:55:39+08:00">2019-03-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 17:56:49" itemprop="dateModified" datetime="2019-11-28T17:56:49+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>631</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>前几天用在Mac上用同步助手給iPhone手机安装ipa应用文件，发现iTunes总是会弹出来<code>iTunes 未能连接到此 iPhone。 无法分配资源。</code>,然后一开始以为是数据线问题，然后换了3根数据线然并卵，手机显示可以充上电，但是无法连接到iTunes，同步助手也无法连接到设备。</p>
-<p>思考了再三，然后在同事的电脑上试试，竟然3根数据线都没有问题，顺利连接上了手机，最后确认是自己的Mac pro出了问题，然后Google了一番，发现原来是之前自己不小心删除了Mac上的<code>/private/var/db/lockdown/</code> <strong>lockdown</strong>文件夹（在学习Flutter的时候，配置IOS环境，不小心把lockdown文件夹删除了…&lt;手动惊恐表情&gt;），操作步骤如下：</p>
-<ol>
-<li><code>cd /private/var/db/</code>  进入到目录</li>
-<li><code>ls -la</code> 查看目录下是否有<strong>lockdown</strong>文件夹，如果没有则执行步骤三，有则直接执行步骤四</li>
-<li><code>sudo mkdir lockdown</code>  创建空文件夹</li>
-<li><code>ls -la</code> 查看<strong>lockdown</strong>文件夹属性<br><img src="https://upload-images.jianshu.io/upload_images/8303589-b897f7cd1d2bffa9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误的lockdown文件夹属性"><br>我们可以看到文件夹的权限属性、所属用户、所属组都和正确的不匹配。<br><img src="https://upload-images.jianshu.io/upload_images/8303589-0178e20c0ba552e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正确的lockdown文件夹属性"></li>
-<li><code>sudo chmod 700 /private/var/db/lockdown</code>  修改文件夹权限属性</li>
-<li><code>chgrp _usbmuxd ./lockdown</code>  修改所属组</li>
-<li><code>chgrp _usbmuxd ./lockdown</code>  修改所属用户</li>
-</ol>
-<p><strong>重启iTunes，连接手机，Alert弹出框终于是不弹出来了，顺利识别上了iPhone手机。</strong></p>
-<p><a href="https://blog.elcomsoft.com/2018/07/accessing-lockdown-files-on-macos/" target="_blank" rel="noopener">附赠Google链接</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/03/26/mac-dock/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/26/mac-dock/" class="post-title-link" itemprop="url">mac-dock</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-26 10:30:20" itemprop="dateCreated datePublished" datetime="2019-03-26T10:30:20+08:00">2019-03-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 17:56:33" itemprop="dateModified" datetime="2019-11-28T17:56:33+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>272</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近单位給配置了27寸的大屏幕，在鼠标焦点切换的时候一不小心dock被切到了大屏幕上边，然后不知道咋整，鼠标指针就在屏幕底部上一顿瞎点，神奇的就回到了Mac pro上边，然后就在想，难道没有便捷的方式，比如快捷键什么的，轻松解决我的问题吗？Google科普了下，原来是有的，就是<code>你把鼠标指针放到另一个屏幕的下边框（没有 Dock 的屏幕底部）悬停一会， dock 就会自动过去，想移回来就在原来的屏幕下边框停一会即可。</code></p>
-<p>另外，这里也安利一个Mac上多屏幕焦点切换的问题解决方案，这个也是Google查到的，链接贴在下边：<br><a href="https://medium.com/thevelops-tech-blog/how-to-switch-focus-between-screens-in-macos-21c6f02883a6" target="_blank" rel="noopener">如何在MacOS中的屏幕之间切换焦点</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/01/10/vue-lazyload/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/10/vue-lazyload/" class="post-title-link" itemprop="url">vue-lazyload 动态更新图片bug</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-01-10 23:05:43" itemprop="dateCreated datePublished" datetime="2019-01-10T23:05:43+08:00">2019-01-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 17:56:08" itemprop="dateModified" datetime="2019-11-28T17:56:08+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>721</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天小学习了下Vue的使用，当然我的是2.9.4版本，vue-lazyload支持vue 2.x，在做列表分页的时候发现取到数据之后，文字部分都更新了，但是唯独图片不更新，检查了下接口的返回没有问题，再看了下element上的元素，原来图片的src始终没有改变！</p>
-<p>阿西吧…改成src，发现还是亲的好（皮一下-_-#）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 之前的写法</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"> &lt;img v-lazy&#x3D;&quot;&#39;static&#x2F;&#39;+item.image&quot; alt&#x3D;&quot;&quot;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 改之后的写法:key&#x3D;&quot;item.image&quot;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"> &lt;img v-bind:src&#x3D;&quot;&#39;static&#x2F;&#39;+item.image&quot; alt&#x3D;&quot;&quot;&gt;</span></pre></td></tr></table></figure>
-<p>仔细想了下难道就没有办法了吗？我就想用了插件咋就这么困难呢！按照以往的经验先上GitHub的issues问题库找找，不行再去stack overfolw查找【技巧：xxx site:stackoverflow.com】，果然又踩了前人留下的坑，翻了几个issues看看，原来加个key就搞定了！<br><img src="https://upload-images.jianshu.io/upload_images/8303589-a5fc9304548236f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 完美版的代码</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&lt;img v-lazy&#x3D;&quot;&#39;static&#x2F;&#39;+item.image&quot; :key&#x3D;&quot;item.image&quot; alt&#x3D;&quot;&quot;&gt;</span></pre></td></tr></table></figure>
-
-<p>总结：查找问题还是先从根源查找，不要上来就各种百度！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2018/11/15/git-multiple-account/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/15/git-multiple-account/" class="post-title-link" itemprop="url">git 多账号配置</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-11-15 20:46:24" itemprop="dateCreated datePublished" datetime="2018-11-15T20:46:24+08:00">2018-11-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 16:39:15" itemprop="dateModified" datetime="2019-11-28T16:39:15+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.6k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>有的时候我们肯那个会用到两个<code>github</code>账号，这个时候提交代码就出现了问题，第一个可以提交，但是第二个提交就出现了问题。</p>
-<h4 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h4><ul>
-<li>生成公钥和私钥文件</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">// <span class="number">1</span>. 首先进入到.ssh目录</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ~/.ssh</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">// <span class="number">2</span>. 查看本地是否已经有存在的公钥和私钥文件(PS: 如果存在了，则只需要生成第二个账号即可，或者全部删除重新生成)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">// <span class="number">3</span>.生成SSHkey</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"你的github邮箱"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">然后按下Enter(回车键)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">这个时候提示：Enter <span class="keyword">file</span> in which <span class="keyword">to</span> save the key（xxx/xxx/.ssh/id_rsa）:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">我们按照格式键入要保存的文件名即可：id_rsa_xxx   xxx是你自己定义的名字</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">这个时候又提示：Enter passphrase (<span class="built_in">empty</span> <span class="keyword">for</span> <span class="keyword">no</span> passphrase):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">直接按下Enter(回车键)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">这个时候又提示：Enter same passphrase again:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">继续按下Enter(回车键)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">OK，成功之后会提示以下信息(PS: 说明已经成功生成SSHKey):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">Your public key <span class="built_in">has</span> been saved in xxx/xxx/.ssh/id_rsa_(你刚才定义的名字).pub</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">The key fingerprint i<span class="variable">s:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    SHA256:lEmncZqtuXuHgZ4XtkVMkazLaTC5XgN0VLjYi3T8Fk8 xxx@xxx.<span class="keyword">com</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    The key s randomart image i<span class="variable">s:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    +---[RSA <span class="number">2048</span>]----+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    |        <span class="keyword">o</span> <span class="keyword">o</span>..=+<span class="keyword">o</span> |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    |       . @. + <span class="keyword">o</span> <span class="keyword">X</span>|</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    |        B..B <span class="keyword">o</span>   |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    |       . oB B . E|</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    |        So <span class="keyword">X</span> = + |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">    |        ..* <span class="keyword">X</span> <span class="keyword">o</span> .|</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">    |       ..+ O <span class="keyword">o</span>   |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">    |        <span class="keyword">o</span>.* .    |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">    |        .<span class="keyword">o</span> .     |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    +----[SHA256]-----+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">// <span class="number">4</span>. 再次查看.ssh目录</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">这个时候应会看到有文件: id_rsa_(你刚才定义的名字)、id_rsa_(你刚才定义的名字).pub</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">// <span class="number">5</span>. 把公钥配置到GitHub</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">pbcopy &lt; ~/.ssh/id_rsa_(你刚才定义的名字).pub   // 拷贝公钥到剪贴板</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">登录github SSH <span class="built_in">keys</span>粘贴进去配置好</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">// <span class="number">6</span>. 新的密钥添加到SSH agent中</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">ssh-<span class="built_in">add</span> id_rsa_(你刚才定义的名字)  // 这里是添加私钥</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">// <span class="number">7</span>. 创建配置文件config</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> config  // 新建并打开config文件</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">键入以下字符：</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">==============分割线(不要粘贴进去)=================</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">Host github.<span class="keyword">com</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line">HostName github.<span class="keyword">com</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line">PreferredAuthentications publickey</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">IdentityFile ~/.ssh/id_rsa</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">Host (你刚才定义的名字).github.<span class="keyword">com</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">HostName github.<span class="keyword">com</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">PreferredAuthentications publickey</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line">IdentityFile ~/.ssh/id_rsa_(你刚才定义的名字)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">==============分割线(不要粘贴进去)=================</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line">// <span class="number">8</span>. 验证连接</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">61</span></pre></td><td class="code"><pre><span class="line">ssh -T git@(你刚才定义的名字).github.<span class="keyword">com</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">62</span></pre></td><td class="code"><pre><span class="line">这个如果成功会出现提示：Hi xxx! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">63</span></pre></td><td class="code"><pre><span class="line"><span class="string"></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">64</span></pre></td><td class="code"><pre><span class="line"><span class="string">// 9. 设置本地全局git邮箱和用户名</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">65</span></pre></td><td class="code"><pre><span class="line"><span class="string">git config --global user.email "你的邮箱"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">66</span></pre></td><td class="code"><pre><span class="line"><span class="string">git config --global user.name  "你的名字"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">67</span></pre></td><td class="code"><pre><span class="line"><span class="string">git config --list  //  查看设置好的内容</span></span></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2018/09/19/chrome-screenshots/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/19/chrome-screenshots/" class="post-title-link" itemprop="url">谷歌浏览器屏幕截图以及书签问题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-09-19 11:39:49" itemprop="dateCreated datePublished" datetime="2018-09-19T11:39:49+08:00">2018-09-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 17:55:40" itemprop="dateModified" datetime="2019-11-28T17:55:40+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>420</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="Windows系统："><a href="#Windows系统：" class="headerlink" title="Windows系统："></a>Windows系统：</h5><p>1、<code>F12</code> 打开开发者工具台<br>2、<code>ctrl + shift + p</code>，弹出搜索框之后输入： <code>cap</code><br>3、选中第二个按下回车键，成功保存图片。【即：Mobile– Capture fullsize screenshot】</p>
-<h5 id="Mac-系统："><a href="#Mac-系统：" class="headerlink" title="Mac 系统："></a>Mac 系统：</h5><p>1、<code>commend + option + i</code>，也就是 <code>⌘ + ⌥ + i</code>，打开开发者工具台<br>2、<code>command + shift + p</code>，也就是 <code>⌘ + ⇧ + p</code>，弹出搜索框之后输入： <code>cap</code><br>3、选中第二个按下回车键，成功保存图片。【即：Mobile– Capture fullsize screenshot】</p>
-<p>最后关于收藏夹链接跳转新页面问题：</p>
-<h5 id="Windows系统：-1"><a href="#Windows系统：-1" class="headerlink" title="Windows系统："></a>Windows系统：</h5><p>鼠标悬浮状态下移动到要跳转的收藏条目【链接】然后右键在弹出的悬浮窗体中选择在新的标签页中打开即可</p>
-<h5 id="Mac系统："><a href="#Mac系统：" class="headerlink" title="Mac系统："></a>Mac系统：</h5><p>鼠标悬浮状态下移动到要跳转的收藏条目【链接】然后双指按下触摸板在弹出的悬浮窗体中选择在新的标签页中打开即可<br>最后最后，哈哈，安利一个书签栏【即收藏夹】扩展插件：<code>Neater Bookmarks</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2018/09/19/mac-spctl/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/19/mac-spctl/" class="post-title-link" itemprop="url">mac xxx 文件已经损坏，请移除到废纸篓问题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-09-19 11:14:07" itemprop="dateCreated datePublished" datetime="2018-09-19T11:14:07+08:00">2018-09-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 17:55:12" itemprop="dateModified" datetime="2019-11-28T17:55:12+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>74</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>执行命令：<code>sudo spctl --master-disable</code>  然后安装，<br>安装完毕之后，再执行命令： <code>sudo spctl --master-enable</code> 关闭</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2018/08/10/ngx-datatable/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/10/ngx-datatable/" class="post-title-link" itemprop="url">ngx-datatable组件table重新计算，手动触发resize事件</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-10 14:52:46" itemprop="dateCreated datePublished" datetime="2018-08-10T14:52:46+08:00">2018-08-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 17:54:03" itemprop="dateModified" datetime="2019-11-28T17:54:03+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>579</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近写Angular项目用到@swimlane/ngx-datatable组件，其中table有一个recalculate()方法，可以重新计算网格大小。由于左侧边栏可以伸缩导致table没有重新计算，看了下ngx-datatable的实现源码，原来是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#x2F;**</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">* Window resize handler to update sizes.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"> *&#x2F;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">@HostListener(&#39;window:resize&#39;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">@throttleable(5)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">onWindowResize(): void &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  this.recalculate();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<p>只有触发window的resize事件才能重新计算，故想到一个方法：手动触发一个resize事件加入异步队列得以解决。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 1. 得到组件</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">@ViewChild(&#39;datatable&#39;) datatable;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 2. 触发方法</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">const e &#x3D; document.createEvent(&#39;Event&#39;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">e.initEvent(&#39;resize&#39;, true, true);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">window.dispatchEvent(e);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">this.datatable.recalculate();</span></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2017/12/31/ng-laydate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/12/31/ng-laydate/" class="post-title-link" itemprop="url">Angular4日期时间控件 --- laydate</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2017-12-31 12:32:28" itemprop="dateCreated datePublished" datetime="2017-12-31T12:32:28+08:00">2017-12-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 18:10:00" itemprop="dateModified" datetime="2019-11-28T18:10:00+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>947</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近在项目中由于要使用到日期控件，但是看了好多github上的许多日期控件都只提供了选择年月日的功能，然后项目中需要精确到时间，自己写还比较麻烦，满足不了需求。由于之前的项目中有用到layDate这个日期控件，可以精确选择到时间，整好满足当前的项目需求，但是由于Angular2.x之后使用typeScript编程，无法直接使用js文件，所以做了些修改，导入项目中，下边是一些引入的步骤，我的版本是（4.2.4），当然其他版本应该也可以。</p>
-<p>第一步：上官网下载独立版本的日期与时间组件文件包：<a href="http://www.layui.com/laydate/" target="_blank" rel="noopener">http://www.layui.com/laydate/</a></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-4c1219d365ebc3ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="laydate官网"></p>
-<p>01<br>第二步：Angular2.x之后推荐将资源文件放到 src\assets 目录下，所以将下载好的文件 laydate文件夹下的 theme 文件夹和 laydate.js 一起复制（拷贝）一份到项目 src\assets 目录下，如图所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-d3963920d48e6276.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="assets配置"></p>
-<p>02<br>第三步：由于我是使用脚手架 angular-cli 生成的项目，所以在引入外部文件的时候需要在 .angular-cli.json 文件中配置，配置项信息如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-9d8de30f90a3dacd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="angular.json配置"></p>
-<p>03<br>第四步： 用过laydate的都知道在执行的时候需要一个laydate实例，然后由于是ts文件，直接使用 laydate.render() 方法实例化一个日期组件会报错，说laydate未定义该变量的声明而报错，所以需要在组件你的 xxx.component.ts 文件里边声明laydate变量，声明如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-2756dfcd4f76d862.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="组件中使用"></p>
-<p>04<br>第五步：声明之后按理说就可以实例化一个日期时间控件了，但是仍然为报laydate找不到定义的错误，所以我们需要，原因就是我们程序没有访问到自己的路径，所以我们需要修改 laydate.js文件中theme源文件路径，用文本编辑器打开laydate.js 文件，全局搜索如下内容： modules/laydate/“:”theme/ </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-54f48625801cb6cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="版本修复"></p>
-<p>05-1<br>修改theme文件夹的路径为 assets/theme，并将返回的默认版本信息删除，修改之后文件如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-f70f02ad266d04a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="样式修复"></p>
-<p>05-2<br>第六步：做完以上步骤之后，接下来就是轻松愉快是使用啦，(<em>^__^</em>) 嘻嘻。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-c24abf8391860706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="html中使用"></p>
-<p>06-1</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-2fbfc3541dc35b97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="初始化"></p>
-<p>06-2<br>laydate的使用手册可以参考官网文档： <a href="http://www.layui.com/doc/modules/laydate.html" target="_blank" rel="noopener">http://www.layui.com/doc/modules/laydate.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2017/11/26/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="lanxuexing">
-      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunny Bottle">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/11/26/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2017-11-26 10:30:20" itemprop="dateCreated datePublished" datetime="2017-11-26T10:30:20+08:00">2017-11-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 18:06:50" itemprop="dateModified" datetime="2019-11-28T18:06:50+08:00">2019-11-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>361</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<h3 id="Init"><a href="#Init" class="headerlink" title="Init"></a>Init</h3>
       
     </div>
 
@@ -1122,7 +1079,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1144,10 +1101,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -1168,15 +1125,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -1208,7 +1165,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1217,17 +1174,17 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">69k</span>
+    <span title="站点总字数">246k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:03</span>
+    <span title="站点阅读时长">3:44</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
   </div>
 
         
@@ -1237,7 +1194,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
-      <span class="site-uv" title="Total Visitors">
+      <span class="site-uv" title="总访客量">
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
@@ -1246,7 +1203,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
-      <span class="site-pv" title="Total Views">
+      <span class="site-pv" title="总访问量">
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -24,8 +24,8 @@
     version: '7.5.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -42,26 +42,24 @@
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     },
     sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="1. 前言通常，当我们使用angular-cli启动应用程序时，默认情况下它将使用css，除非我们按以下方式创建项目。 1ng new your_application --style&amp;#x3D;scss  但是当我们开发项目到一半的时候，突然有一天研究某些东西后发现使用scss比css好用多了，这个时候我们将面临一个大问题，怎么将当前项目的css全部转成scss进行以后的开发且置为默认项呢？别">
+  <meta name="description" content="1. 前言通常，当我们使用angular-cli启动应用程序时，默认情况下它将使用css，除非我们按以下方式创建项目。1ng new your_application --style&amp;#x3D;scss但是当我们开发项目到一半的时候，突然有一天研究某些东西后发现使用scss比css好用多了，这个时候我们将面临一个大问题，怎么将当前项目的css全部转成scss进行以后的开发且置为默认项呢？别着急，往">
 <meta name="keywords" content="angular">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular项目从CSS迁移到SCSS">
 <meta property="og:url" content="http:&#x2F;&#x2F;lanxuexing.github.io&#x2F;2019&#x2F;09&#x2F;26&#x2F;ng-scss-migrate&#x2F;index.html">
 <meta property="og:site_name" content="Sunny Bottle">
-<meta property="og:description" content="1. 前言通常，当我们使用angular-cli启动应用程序时，默认情况下它将使用css，除非我们按以下方式创建项目。 1ng new your_application --style&amp;#x3D;scss  但是当我们开发项目到一半的时候，突然有一天研究某些东西后发现使用scss比css好用多了，这个时候我们将面临一个大问题，怎么将当前项目的css全部转成scss进行以后的开发且置为默认项呢？别">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-4abecdc2df015a4f.jpeg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:updated_time" content="2019-11-28T10:02:15.441Z">
+<meta property="og:description" content="1. 前言通常，当我们使用angular-cli启动应用程序时，默认情况下它将使用css，除非我们按以下方式创建项目。1ng new your_application --style&amp;#x3D;scss但是当我们开发项目到一半的时候，突然有一天研究某些东西后发现使用scss比css好用多了，这个时候我们将面临一个大问题，怎么将当前项目的css全部转成scss进行以后的开发且置为默认项呢？别着急，往">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-02T06:12:06.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-4abecdc2df015a4f.jpeg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 
 <link rel="canonical" href="http://lanxuexing.github.io/2019/09/26/ng-scss-migrate/">
 
@@ -128,7 +126,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -142,26 +140,26 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
@@ -175,7 +173,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="Searching..." spellcheck="false"
+           placeholder="搜索..." spellcheck="false"
            type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
@@ -212,7 +210,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/09/26/ng-scss-migrate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -234,39 +232,39 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2019-09-26 19:40:45" itemprop="dateCreated datePublished" datetime="2019-09-26T19:40:45+08:00">2019-09-26</time>
+              <time title="创建时间：2019-09-26 19:40:45" itemprop="dateCreated datePublished" datetime="2019-09-26T19:40:45+08:00">2019-09-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 18:02:15" itemprop="dateModified" datetime="2019-11-28T18:02:15+08:00">2019-11-28</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-02 14:12:06" itemprop="dateModified" datetime="2019-12-02T14:12:06+08:00">2019-12-02</time>
               </span>
 
           
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">Views: </span>
+              <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span><br>
-            <span class="post-meta-item" title="Symbols count in article">
+            <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
+                <span class="post-meta-item-text">本文字数：</span>
               <span>1.7k</span>
             </span>
-            <span class="post-meta-item" title="Reading time">
+            <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -278,11 +276,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://upload-images.jianshu.io/upload_images/8303589-4abecdc2df015a4f.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>通常，当我们使用angular-cli启动应用程序时，默认情况下它将使用css，除非我们按以下方式创建项目。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">ng new your_application --style&#x3D;scss</span></pre></td></tr></table></figure>
+        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>通常，当我们使用angular-cli启动应用程序时，默认情况下它将使用css，除非我们按以下方式创建项目。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">ng new your_application --style&#x3D;scss</span></pre></td></tr></table></figure><p>但是当我们开发项目到一半的时候，突然有一天研究某些东西后发现使用scss比css好用多了，这个时候我们将面临一个大问题，怎么将当前项目的css全部转成scss进行以后的开发且置为默认项呢？别着急，往下看！</p><a id="more"></a>
 
-<p>但是当我们开发项目到一半的时候，突然有一天研究某些东西后发现使用scss比css好用多了，这个时候我们将面临一个大问题，怎么将当前项目的css全部转成scss进行以后的开发且置为默认项呢？别着急，往下看！</p>
+
+
 <h4 id="2-第1步：更改步骤"><a href="#2-第1步：更改步骤" class="headerlink" title="2. 第1步：更改步骤"></a>2. 第1步：更改步骤</h4><p>如果你使用的是最新的angular-cli，那最好了，如果不是请检查当前的angular-cli版本是否大于6.0.7，如果以上都没有问题，那么OK，请使用以下命令更改配置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">ng config schematics.@schematics&#x2F;angular:component.styleext scss</span></pre></td></tr></table></figure>
 
@@ -362,10 +359,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -387,15 +384,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -427,7 +424,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -436,17 +433,17 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">69k</span>
+    <span title="站点总字数">246k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:03</span>
+    <span title="站点阅读时长">3:44</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
   </div>
 
         
@@ -456,7 +453,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
-      <span class="site-uv" title="Total Visitors">
+      <span class="site-uv" title="总访客量">
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
@@ -465,7 +462,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
-      <span class="site-pv" title="Total Views">
+      <span class="site-pv" title="总访问量">
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -24,8 +24,8 @@
     version: '7.5.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -42,9 +42,9 @@
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     },
     sidebarPadding: 40
   };
@@ -57,7 +57,7 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;lanxuexing.github.io&#x2F;2017&#x2F;12&#x2F;31&#x2F;ng-laydate&#x2F;index.html">
 <meta property="og:site_name" content="Sunny Bottle">
 <meta property="og:description" content="最近在项目中由于要使用到日期控件，但是看了好多github上的许多日期控件都只提供了选择年月日的功能，然后项目中需要精确到时间，自己写还比较麻烦，满足不了需求。由于之前的项目中有用到layDate这个日期控件，可以精确选择到时间，整好满足当前的项目需求，但是由于Angular2.x之后使用typeScript编程，无法直接使用js文件，所以做了些修改，导入项目中，下边是一些引入的步骤，我的版本是（">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-4c1219d365ebc3ac.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-d3963920d48e6276.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-9d8de30f90a3dacd.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
@@ -66,7 +66,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-f70f02ad266d04a0.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-c24abf8391860706.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-2fbfc3541dc35b97.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:updated_time" content="2019-11-28T10:10:00.464Z">
+<meta property="og:updated_time" content="2019-12-02T06:12:06.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8303589-4c1219d365ebc3ac.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 
@@ -135,7 +135,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -149,26 +149,26 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
@@ -182,7 +182,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="Searching..." spellcheck="false"
+           placeholder="搜索..." spellcheck="false"
            type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
@@ -219,7 +219,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2017/12/31/ng-laydate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -241,39 +241,39 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2017-12-31 12:32:28" itemprop="dateCreated datePublished" datetime="2017-12-31T12:32:28+08:00">2017-12-31</time>
+              <time title="创建时间：2017-12-31 12:32:28" itemprop="dateCreated datePublished" datetime="2017-12-31T12:32:28+08:00">2017-12-31</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 18:10:00" itemprop="dateModified" datetime="2019-11-28T18:10:00+08:00">2019-11-28</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-02 14:12:06" itemprop="dateModified" datetime="2019-12-02T14:12:06+08:00">2019-12-02</time>
               </span>
 
           
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">Views: </span>
+              <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span><br>
-            <span class="post-meta-item" title="Symbols count in article">
+            <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
+                <span class="post-meta-item-text">本文字数：</span>
               <span>947</span>
             </span>
-            <span class="post-meta-item" title="Reading time">
+            <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -285,23 +285,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近在项目中由于要使用到日期控件，但是看了好多github上的许多日期控件都只提供了选择年月日的功能，然后项目中需要精确到时间，自己写还比较麻烦，满足不了需求。由于之前的项目中有用到layDate这个日期控件，可以精确选择到时间，整好满足当前的项目需求，但是由于Angular2.x之后使用typeScript编程，无法直接使用js文件，所以做了些修改，导入项目中，下边是一些引入的步骤，我的版本是（4.2.4），当然其他版本应该也可以。</p>
+        <p>最近在项目中由于要使用到日期控件，但是看了好多github上的许多日期控件都只提供了选择年月日的功能，然后项目中需要精确到时间，自己写还比较麻烦，满足不了需求。由于之前的项目中有用到layDate这个日期控件，可以精确选择到时间，整好满足当前的项目需求，但是由于Angular2.x之后使用typeScript编程，无法直接使用js文件，所以做了些修改，导入项目中，下边是一些引入的步骤，我的版本是（4.2.4），当然其他版本应该也可以。</p><a id="more"></a>
 <p>第一步：上官网下载独立版本的日期与时间组件文件包：<a href="http://www.layui.com/laydate/" target="_blank" rel="noopener">http://www.layui.com/laydate/</a></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-4c1219d365ebc3ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="laydate官网"></p>
+<html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-4c1219d365ebc3ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html>
+
+
 <p>01<br>第二步：Angular2.x之后推荐将资源文件放到 src\assets 目录下，所以将下载好的文件 laydate文件夹下的 theme 文件夹和 laydate.js 一起复制（拷贝）一份到项目 src\assets 目录下，如图所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-d3963920d48e6276.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="assets配置"></p>
+<html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-d3963920d48e6276.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html>
+
+
 <p>02<br>第三步：由于我是使用脚手架 angular-cli 生成的项目，所以在引入外部文件的时候需要在 .angular-cli.json 文件中配置，配置项信息如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-9d8de30f90a3dacd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="angular.json配置"></p>
+<html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-9d8de30f90a3dacd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html>
+
+
 <p>03<br>第四步： 用过laydate的都知道在执行的时候需要一个laydate实例，然后由于是ts文件，直接使用 laydate.render() 方法实例化一个日期组件会报错，说laydate未定义该变量的声明而报错，所以需要在组件你的 xxx.component.ts 文件里边声明laydate变量，声明如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-2756dfcd4f76d862.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="组件中使用"></p>
+<html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-2756dfcd4f76d862.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html>
+
+
 <p>04<br>第五步：声明之后按理说就可以实例化一个日期时间控件了，但是仍然为报laydate找不到定义的错误，所以我们需要，原因就是我们程序没有访问到自己的路径，所以我们需要修改 laydate.js文件中theme源文件路径，用文本编辑器打开laydate.js 文件，全局搜索如下内容： modules/laydate/“:”theme/ </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-54f48625801cb6cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="版本修复"></p>
+<html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-54f48625801cb6cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html>
+
+
 <p>05-1<br>修改theme文件夹的路径为 assets/theme，并将返回的默认版本信息删除，修改之后文件如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-f70f02ad266d04a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="样式修复"></p>
+<html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-f70f02ad266d04a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html>
+
 <p>05-2<br>第六步：做完以上步骤之后，接下来就是轻松愉快是使用啦，(<em>^__^</em>) 嘻嘻。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-c24abf8391860706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="html中使用"></p>
+<html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-c24abf8391860706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html>
+
+
 <p>06-1</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8303589-2fbfc3541dc35b97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="初始化"></p>
+<html>
+    <img src="https://upload-images.jianshu.io/upload_images/8303589-2fbfc3541dc35b97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" referrerpolicy="no-referrer">
+</html>
+
 <p>06-2<br>laydate的使用手册可以参考官网文档： <a href="http://www.layui.com/doc/modules/laydate.html" target="_blank" rel="noopener">http://www.layui.com/doc/modules/laydate.html</a></p>
 
     </div>
@@ -360,10 +390,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -384,15 +414,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -424,7 +454,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -433,17 +463,17 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">69k</span>
+    <span title="站点总字数">246k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:03</span>
+    <span title="站点阅读时长">3:44</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
   </div>
 
         
@@ -453,7 +483,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
-      <span class="site-uv" title="Total Visitors">
+      <span class="site-uv" title="总访客量">
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
@@ -462,7 +492,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
-      <span class="site-pv" title="Total Views">
+      <span class="site-pv" title="总访问量">
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>

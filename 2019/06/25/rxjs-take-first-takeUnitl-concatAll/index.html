@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -24,8 +24,8 @@
     version: '7.5.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -42,22 +42,22 @@
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     },
     sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="Rxjs学习之路1、小贴士这篇文章是我的Angular Rxjs Series中的第篇三文章，在继续阅读本文之前，您至少应该熟悉系列中的第一篇基础文章： Rxjs6都改变了些什么？ Rxjs【Observable】 1&#x2F;&#x2F; 图谱2&#x2F;&#x2F; ----- 代表一个Observable3&#x2F;&#x2F; -----X 代表一个Observable有错误发生4&#x2F;&#x2F; -----| 代表一个Observable结束5&#x2F;&#x2F; (">
+  <meta name="description" content="Rxjs学习之路1、小贴士这篇文章是我的Angular Rxjs Series中的第篇三文章，在继续阅读本文之前，您至少应该熟悉系列中的第一篇基础文章：Rxjs6都改变了些什么？Rxjs【Observable】1&#x2F;&#x2F; 图谱2&#x2F;&#x2F; ----- 代表一个Observable3&#x2F;&#x2F; -----X 代表一个Observable有错误发生4&#x2F;&#x2F; -----| 代表一个Observable结束5&#x2F;&#x2F; (123">
 <meta name="keywords" content="rxjs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rxjs【take, first, takeUntil, concatAll】">
 <meta property="og:url" content="http:&#x2F;&#x2F;lanxuexing.github.io&#x2F;2019&#x2F;06&#x2F;25&#x2F;rxjs-take-first-takeUnitl-concatAll&#x2F;index.html">
 <meta property="og:site_name" content="Sunny Bottle">
-<meta property="og:description" content="Rxjs学习之路1、小贴士这篇文章是我的Angular Rxjs Series中的第篇三文章，在继续阅读本文之前，您至少应该熟悉系列中的第一篇基础文章： Rxjs6都改变了些什么？ Rxjs【Observable】 1&#x2F;&#x2F; 图谱2&#x2F;&#x2F; ----- 代表一个Observable3&#x2F;&#x2F; -----X 代表一个Observable有错误发生4&#x2F;&#x2F; -----| 代表一个Observable结束5&#x2F;&#x2F; (">
-<meta property="og:locale" content="en">
+<meta property="og:description" content="Rxjs学习之路1、小贴士这篇文章是我的Angular Rxjs Series中的第篇三文章，在继续阅读本文之前，您至少应该熟悉系列中的第一篇基础文章：Rxjs6都改变了些什么？Rxjs【Observable】1&#x2F;&#x2F; 图谱2&#x2F;&#x2F; ----- 代表一个Observable3&#x2F;&#x2F; -----X 代表一个Observable有错误发生4&#x2F;&#x2F; -----| 代表一个Observable结束5&#x2F;&#x2F; (123">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-11-28T10:01:57.799Z">
 <meta name="twitter:card" content="summary">
 
@@ -126,7 +126,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -140,26 +140,26 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
@@ -173,7 +173,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="Searching..." spellcheck="false"
+           placeholder="搜索..." spellcheck="false"
            type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
@@ -210,7 +210,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2019/06/25/rxjs-take-first-takeUnitl-concatAll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -232,39 +232,39 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2019-06-25 17:34:17" itemprop="dateCreated datePublished" datetime="2019-06-25T17:34:17+08:00">2019-06-25</time>
+              <time title="创建时间：2019-06-25 17:34:17" itemprop="dateCreated datePublished" datetime="2019-06-25T17:34:17+08:00">2019-06-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 18:01:57" itemprop="dateModified" datetime="2019-11-28T18:01:57+08:00">2019-11-28</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 18:01:57" itemprop="dateModified" datetime="2019-11-28T18:01:57+08:00">2019-11-28</time>
               </span>
 
           
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">Views: </span>
+              <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span><br>
-            <span class="post-meta-item" title="Symbols count in article">
+            <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
+                <span class="post-meta-item-text">本文字数：</span>
               <span>8.4k</span>
             </span>
-            <span class="post-meta-item" title="Reading time">
+            <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>8 mins.</span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -276,10 +276,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Rxjs学习之路"><a href="#Rxjs学习之路" class="headerlink" title="Rxjs学习之路"></a>Rxjs学习之路</h1><h4 id="1、小贴士"><a href="#1、小贴士" class="headerlink" title="1、小贴士"></a>1、小贴士</h4><p>这篇文章是我的Angular Rxjs Series中的第篇三文章，在继续阅读本文之前，您至少应该熟悉系列中的第一篇基础文章：</p>
-<p><a href="https://www.jianshu.com/p/ce1a15957a7f" target="_blank" rel="noopener">Rxjs6都改变了些什么？</a></p>
-<p><a href="https://www.jianshu.com/p/fc0e30328de3" target="_blank" rel="noopener">Rxjs【Observable】</a></p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图谱</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// ----- 代表一个Observable</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// -----X 代表一个Observable有错误发生</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// -----| 代表一个Observable结束</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// (1234)| 代表一个同步Observable结束</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 特别提示：以下的操作符介绍均采用rxjs6的写法！！！</span></span></pre></td></tr></table></figure>
+        <h1 id="Rxjs学习之路"><a href="#Rxjs学习之路" class="headerlink" title="Rxjs学习之路"></a>Rxjs学习之路</h1><h4 id="1、小贴士"><a href="#1、小贴士" class="headerlink" title="1、小贴士"></a>1、小贴士</h4><p>这篇文章是我的Angular Rxjs Series中的第篇三文章，在继续阅读本文之前，您至少应该熟悉系列中的第一篇基础文章：</p><p><a href="https://www.jianshu.com/p/ce1a15957a7f" target="_blank" rel="noopener">Rxjs6都改变了些什么？</a></p><p><a href="https://www.jianshu.com/p/fc0e30328de3" target="_blank" rel="noopener">Rxjs【Observable】</a></p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图谱</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// ----- 代表一个Observable</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// -----X 代表一个Observable有错误发生</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// -----| 代表一个Observable结束</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// (1234)| 代表一个同步Observable结束</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 特别提示：以下的操作符介绍均采用rxjs6的写法！！！</span></span></pre></td></tr></table></figure><a id="more"></a>
+
+
+
 
 
 <h4 id="2、take"><a href="#2、take" class="headerlink" title="2、take"></a>2、take</h4><pre><code>take就是取前几个元素后就结束</code></pre><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * 例如：      interval(1000).pipe(take(4))</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * source:    -----0-----1-----2-----3-----4--..</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> *                      take(4)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * newest     -----0-----1-----2-----3|</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> takeObservable = interval(<span class="number">1000</span>).pipe(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    take(<span class="number">4</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">takeObservable.subscribe(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    next: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'=====table操作符: '</span>, value); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    error: <span class="function">(<span class="params">err</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'=====table操作符: Error: '</span>, err); &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    complete: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">'=====table操作符: complete!'</span>); &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
@@ -356,10 +356,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -381,15 +381,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -421,7 +421,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -430,17 +430,17 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">69k</span>
+    <span title="站点总字数">246k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:03</span>
+    <span title="站点阅读时长">3:44</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
   </div>
 
         
@@ -450,7 +450,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
-      <span class="site-uv" title="Total Visitors">
+      <span class="site-uv" title="总访客量">
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
@@ -459,7 +459,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
-      <span class="site-pv" title="Total Views">
+      <span class="site-pv" title="总访问量">
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>

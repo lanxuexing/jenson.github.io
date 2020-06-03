@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言 vim语法高亮  1vim ~&amp;#x2F;.vimrc23&amp;#x2F;&amp;#x2F; 然后在文件中添加如下代码4syntax on5colorscheme darkblue   vim在线中文帮助文档  1. 插入文本">
+<meta name="keywords" content="vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim学习笔记">
+<meta property="og:url" content="http:&#x2F;&#x2F;lanxuexing.github.io&#x2F;2020&#x2F;01&#x2F;16&#x2F;vim&#x2F;index.html">
+<meta property="og:site_name" content="Sunny Bottle">
+<meta property="og:description" content="前言 vim语法高亮  1vim ~&amp;#x2F;.vimrc23&amp;#x2F;&amp;#x2F; 然后在文件中添加如下代码4syntax on5colorscheme darkblue   vim在线中文帮助文档  1. 插入文本">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-17T02:34:02.892Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://lanxuexing.github.io/2020/01/16/vim/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>vim学习笔记 | Sunny Bottle</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sunny Bottle</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/lanxuexing" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lanxuexing.github.io/2020/01/16/vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lanxuexing">
+      <meta itemprop="description" content="love digging into the internals of frontend. always trying to reach the next level.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunny Bottle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vim学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-16 23:17:32" itemprop="dateCreated datePublished" datetime="2020-01-16T23:17:32+08:00">2020-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-17 10:34:02" itemprop="dateModified" datetime="2020-03-17T10:34:02+08:00">2020-03-17</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>12 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><ul>
+<li>vim语法高亮</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;.vimrc</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 然后在文件中添加如下代码</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">syntax on</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">colorscheme darkblue</span></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://yianwillis.github.io/vimcdoc/doc/help.html" target="_blank" rel="noopener">vim在线中文帮助文档</a></li>
+</ul>
+<h4 id="1-插入文本"><a href="#1-插入文本" class="headerlink" title="1. 插入文本"></a>1. 插入文本</h4><a id="more"></a>
+<ul>
+<li><ol>
+<li>Normal模式与Insert模式<ul>
+<li>Normal模式：键入的每个自负都被视为一个命令</li>
+<li>Insert模式：键入的自负作为实际要输入的文本内容，使用<code>i</code>命令（insert）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>现在是什么模式？<ul>
+<li>打开显示模式：<code>:set showmode</code></li>
+<li>关闭显示模式：<code>:set noshowmode</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>模式之灾<ul>
+<li>使用Vim经常忘记自己身在何种模式，或者不经意敲了那个字符就切换到别的模式去了，按再次<code>Esc</code>，如果Vim以一声蜂鸣来回答你，那说明你已经是在<code>Normal</code>模式了。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>移动光标<ul>
+<li>移动光标命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">       K  上</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">h  左         l  右</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">       j  下</span></pre></td></tr></table></figure></li>
+<li>也可以用箭头键来移动光标，会大大的降低效率，想象一下要是一下你在一小时内这样的做一百次会占用你多少时间？在编辑器中移动光标是十分常用的操作，这些字符在键盘上都分布在你右手周围，精心挑选的。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>删除字符<ul>
+<li><ol>
+<li>删除一个字符命令：<code>x</code><ul>
+<li>这是在追忆古老的打字机的时代，在打字机上删除字符就是用xxxx来覆盖它的。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>删除一行命令：<code>dd</code><ul>
+<li>删除后下边的行会移上来填补空缺。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>删除换行符命令：<code>J</code><ul>
+<li>把两行合并为一行，也就是说两行之间的换行符被删除了。 </li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>撤销和重做<ul>
+<li><ol>
+<li>撤销命令：<code>u</code>（undo）<ul>
+<li>如果误删除了过多的内容，命令<code>u</code>更简便，它可以撤销上一次的操作。</li>
+<li>撤销命令还有另一种形式，<code>U</code>命令，它一次撤销对一行的全部操作，即打开文件时的状态。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>重做命令：<code>ctrl + r</code>（repeat）<ul>
+<li>如果你撤销了多次，可以用<code>ctrl + r</code>来反转撤销的动作，换句话说它是对撤销的撤销。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>其他编辑命令<ul>
+<li><ol>
+<li>追加</li>
+</ol>
+<ul>
+<li>在光标之后插入文本命令：<code>a</code>（append）</li>
+<li>另起一行命令：<code>o/O</code><ul>
+<li><code>o</code>命令可以在当前行的下边另起一行，并使当前模式反转为Insert模式，而大写的<code>O</code>，是在当前行的上边另起一行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>使用命令计数</li>
+</ol>
+<ul>
+<li>指定的数字要紧挨在它所有修饰的命令前边。</li>
+<li>假设你要向上移动9行，这可以用<code>kkkkkkkkk</code>或者<code>9K</code>来完成。</li>
+<li>行尾追加三个感叹号，可以用<code>a!!!</code>，另一个办法是<code>3a! &lt;Esc&gt;</code>命令。</li>
+<li>删除3个字符可以用<code>3x</code></li>
+</ul>
+</li>
+<li><ol start="3">
+<li>退出</li>
+</ol>
+<ul>
+<li>放弃编辑命令：<code>q!</code><ul>
+<li>有时你会在做了一连串的修改之后突然意识到最好是放弃所有的修改重新来过，这个命令由3个部分组成：冒号<code>,</code>，用以进入冒号命令行模式：<code>q</code>命令，告诉编辑器退出；最后是强制命令行的修饰符（！） </li>
+</ul>
+</li>
+<li>放弃所有修改后还想以该文件的初始内容作为开始继续编辑：<code>e!</code>（edit）</li>
+<li>保存并退出命令：<code>ZZ</code>或者<code>:wq</code> （write quit）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-帮助文档"><a href="#2-帮助文档" class="headerlink" title="2. 帮助文档"></a>2. 帮助文档</h4><p>你想做的任何操作都可以在vim的帮助文文件中找到答案，所以不用怕问问题。</p>
+<ul>
+<li><ol>
+<li>打开帮助命令：<code>:help</code> 或者 <code>F1</code></li>
+</ol>
+</li>
+<li><ol start="2">
+<li>打开用户手册的目录：<code>:help usr_toc.txt</code></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>常用的帮助命令的使用<ul>
+<li><ol>
+<li>查看关于某个特殊主题的帮助：<code>:help {subject}</code><ul>
+<li><ol>
+<li><code>:help x</code> 关于x命令的帮助</li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>:help deleting</code>  关于如何删除的内容</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>:helo index</code>   所有vim命令的索引</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>关于某个控制字符的帮助： <code>CTRL-{subject}</code><ul>
+<li><ol>
+<li><code>:help CTRL-A</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>查找其他模式下的帮助<ul>
+<li><ol>
+<li><code>:help i_CTRL-H</code>  insert模式</li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>:help v_CTRL-B</code>  Visusl模式</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>:help c_CTRL-B</code>  Command模式</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>关于命令行选项：<code>-{subject}</code><ul>
+<li><ol>
+<li><code>:help -R</code>   vim -R file.txt 以只读模式打开文件   </li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>关于命令行选项的说明：<code>showmode</code><ul>
+<li><code>:help &#39;showmode&#39;</code>  </li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>特殊键用尖括号中的简单的描述性名字表示<ul>
+<li><ol>
+<li><code>:help i_&lt;Up&gt;</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>错误ID号的作为帮助的主题<ul>
+<li><ol start="2">
+<li><code>:help {错误ID}</code> </li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>关于函数<code>subject</code>的帮助<ul>
+<li><ol>
+<li><code>:help add()</code>  在vimscript中使用</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>关于编译时特性<code>+subject</code>的帮助<ul>
+<li><ol>
+<li><code>:help +visual</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="10">
+<li>查找一个以<code>pattern</code>开始的帮助标记，重复按<code>Tab</code>查看其他匹配的帮助标记<ul>
+<li><ol>
+<li><code>:help pattern&lt;Tab&gt;</code> </li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="11">
+<li>同时列出匹配<code>pattern</code>的所有可能的帮助主题<ul>
+<li><ol>
+<li><code>:help pattern&lt;Ctrl-d&gt;</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="12">
+<li>在所有帮助文档中搜索全部文本查找指定的pattern<ul>
+<li><ol>
+<li><code>:helpgrep pattern</code></li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>:copen</code> 打开快速列表 直接回车键进入编辑</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>:cclose</code> 关闭快速列表</li>
+</ol>
+</li>
+<li><ol start="4">
+<li><code>:cn</code> 下一匹配</li>
+</ol>
+</li>
+<li><ol start="5">
+<li><code>:cprev  或者  :cN</code>  前一个匹配</li>
+</ol>
+</li>
+<li><ol start="6">
+<li><code>:cfirst</code> 第一个匹配</li>
+</ol>
+</li>
+<li><ol start="7">
+<li><code>:clast</code>  最后一个匹配</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-移动"><a href="#3-移动" class="headerlink" title="3. 移动"></a>3. 移动</h4><p>要想把vim玩得好，移动是必备的技能点。</p>
+<ul>
+<li><ol>
+<li>以word为单位的移动<ul>
+<li><code>w</code>命令（word）：光标向前移动一个word，光标会移动到下一个word的首字符上，同时可以加计数前缀，如<code>3w</code>，将光标向前移动3个word。</li>
+<li><code>b</code>命令（backward）：光标向后移动到前一个word的首字符上，同时可以加计数前缀，如<code>3b</code>，将光标向后移动3个word。</li>
+<li><code>e</code>命令（end of word）：光标向前移动到下一个word的最后一个字符上。</li>
+<li><code>ge</code>命令：光标向后移动到前一个word的最后一个字符上。<ul>
+<li>以上命令如果遇到连字符<code>/ - _ . 、(</code>等等，按下大写的命令即可。</li>
+<li>混合使用这几种不同的大小写命令，可以让你更快的在文本前后移动。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>移动到行首或行尾<ul>
+<li><code>$</code>命令：光标移动到当前行行尾，与<code>End</code>键作用相同，可以接受计数命令，如<code>2$</code>表示下一行的行尾。</li>
+<li><code>^</code>命令：光标移动到当前行第一个非空的字符上。</li>
+<li><code>0</code>命令：光标移动到当前行第一个字符上，与<code>Home</code>键作用相同。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>移动到指定的字符上<ul>
+<li><code>f</code>命令（find）：向后单字符搜索命令，如<code>fx</code>在当前行查找下一个字符x,同时也可以使用计数命令，如<code>3fx</code>。</li>
+<li><code>F</code>命令：向左单字符搜索命令。</li>
+<li><code>t</code>命令（to）：向右单字符搜索命令，只不过不是把光标停留在被搜索字符上，而是它之前的一个字符上。</li>
+<li><code>T</code>命令：向左单字符搜索命令。<ul>
+<li>可以同时与<code>;</code>键来重复使用这些命令。 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>以匹配一个括号为目的移动<ul>
+<li><code>%</code>命令：光标跳转到与当前光标相匹配的括号上，括号：() [] {}<ul>
+<li>如果当前光标没有停留在一个可用的括号字符上，会向前找到第一个括号，与之匹配。 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>移动到指定行<ul>
+<li><code>G</code>命令（go）：光标定位到计数指定的行，如果没有指定计数，光标会定位到最后一行。</li>
+<li><code>gg</code>命令：定位到第一行与<code>1G</code>的效果相同。</li>
+<li><code>%</code>命令：光标定位到计数指定的行上，如<code>50%</code>，<code>90%</code>等。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>告诉你当前的位置<ul>
+<li><code>Ctrl-g</code>命令：显示信息行，如行号，总行数，以及当前行在文件中的百分比。</li>
+<li><code>set number</code>命令：显示行号。</li>
+<li><code>set nonumber</code>命令：关闭显示行号。</li>
+<li><code>set ruler</code>命令：显示当前光标的位置。</li>
+<li><code>set noruler</code>命令：关闭显示当前光标的位置。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>滚屏<ul>
+<li><code>Ctrl-u</code>命令（up）：文本向下滚动半屏，窗口向上滚动半屏。</li>
+<li><code>Ctrl-d</code>命令（down）：文本向上滚动半屏，窗口向下滚动半屏。</li>
+<li><code>Ctrl-e</code>命令（extra）：文本向上滚动一行，窗口向下滚动一行。</li>
+<li><code>Ctrl-y</code>命令：文本向下滚动一行，窗口向上滚动一行。</li>
+<li><code>Ctrl-f</code>命令（forward）：文本向下滚动一屏，窗口向上滚动一屏。</li>
+<li><code>Ctrl-b</code>命令（backward）：文本向上滚动一屏，窗口向下滚动一屏。</li>
+<li><code>zz</code>命令：当前行置于正中央。</li>
+<li><code>zt</code>命令（top）：当前行置于屏幕顶端。</li>
+<li><code>zb</code>命令（bottom）：当前行置于屏幕底端。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>简单搜索<ul>
+<li><ol>
+<li>常用命令<ul>
+<li><code>/{string}</code>命令：向下搜索一个字符串。</li>
+<li><code>?{string}</code>命令：向上搜索一个字符串。<ul>
+<li><code>n</code>命令：下一次搜索，可以加计数命令。</li>
+<li><code>N</code>命令：上一次搜索，可以加计数命令。<ul>
+<li><code>. * ^ ~ $</code>有特殊的意义，需要一个反斜杠<code>\</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>大小写问题<ul>
+<li><code>:set ignorecase</code>：开启搜索忽略大小写。</li>
+<li><code>:set noignorecase</code>：关闭搜索忽略大小写。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>命令历史记录<ul>
+<li>按下<code>/</code>来搜索，先别按回车键，上箭头键会显示你上一次进行搜索的命令。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>在文本中查找下一个word<ul>
+<li><code>*</code>命令：向下搜索下一个当前光标所在的单词。</li>
+<li><code>#</code>命令：向上搜索下一个当前光标所在的单词。<ul>
+<li>默认以<code>\&lt;{word}\&gt;</code>，完整的单词搜索。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>查找整个word<ul>
+<li><code>\&gt;</code>：单词结束符。</li>
+<li><code>\&lt;</code>：单词开始符。</li>
+<li><code>\&lt;{word}\&gt;</code>：完整的单词搜索。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>高亮显示搜索结果<ul>
+<li><code>:set hlsearch</code>命令（highlight search）： 开启高亮显示搜索结果。</li>
+<li><code>:set nohlsearch</code>命令： 关闭高亮显示搜索结果。</li>
+<li><code>nohlsearch</code>：去掉当前的高亮显示</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>调整搜索<ul>
+<li><code>:set incsearch</code>：开启使用键入莫表字符串同时就开始搜索。</li>
+<li><code>:set noincsearch</code>：关闭使用键入莫表字符串同时就开始搜索。</li>
+<li><code>set warpscan</code>：开启到达文件的尾部会向另一个方向进行搜索。</li>
+<li><code>set nowarpscan</code>：关闭到达文件的尾部会向另一个方向进行搜索。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="4-简单的搜索模式"><a href="#4-简单的搜索模式" class="headerlink" title="4. 简单的搜索模式"></a>4. 简单的搜索模式</h4><p>vim使用正则表达式进行搜索的功能十分的强大。</p>
+<ul>
+<li><ol>
+<li>一行的开头与结尾<ul>
+<li><code>^</code>字符：匹配一行的开头。</li>
+<li>$字符：匹配一行的结尾。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>匹配任何一个字符<ul>
+<li><code>.</code>字符：匹配任何一个字符。<ul>
+<li>备注：如果是特殊字符，需要反斜杠。 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="5-使用标记"><a href="#5-使用标记" class="headerlink" title="5. 使用标记"></a>5. 使用标记</h4><ul>
+<li><ol>
+<li>常用命令<ul>
+<li>``命令：当使用<code>G</code>命令进行跳转时，回到原来的跳转位置。<ul>
+<li>跳转：包括G / 与n等搜索命令，但不包括fx或者tx，以及word为单位的移动命令，或者光标的移动均不包括。</li>
+</ul>
+</li>
+<li><code>Ctrl-o</code>命令（old）：跳转到前一个光标停留的位置。 </li>
+<li><code>Ctrl-i</code>命令：跳转到下一个光标停留的为位置，与<code>Tab</code>键作用功能相同。</li>
+<li><code>jumps</code>命令：显示你曾经跳转过的位置。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>具体的命令的标记命令<ul>
+<li><code>m</code>命令（mark）：定义一个标记，如<code>ms</code>，名为s（start）的标记。</li>
+<li><code>,</code>命令：跳转到某个名字的标记。如<code>s</code>。</li>
+<li><code>:mark</code>：查看所有的标记。</li>
+<li>特殊的标记<ul>
+<li>`：进行此次跳转之前的跳点。</li>
+<li><code>&#39;&#39;</code>到上次跳转的位置。</li>
+<li><code>[</code>最后一次修改的起始位置。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="6-小幅改动"><a href="#6-小幅改动" class="headerlink" title="6. 小幅改动"></a>6. 小幅改动</h4><ul>
+<li><ol>
+<li>操作符命令和位移<ul>
+<li><code>dw</code>命令（delete word）：删除一个word，w可以看作一个word，也可以看作右移了一个word。</li>
+<li><code>d4w</code>命令：删除4个word，4w看作一次右移4个word。</li>
+<li><code>d2e</code>命令：删除2个word，光标移动到第二个word的尾部。</li>
+<li><code>d$</code>命令：删除光标到行尾。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>改变文本<ul>
+<li><ol>
+<li>常用命令<ul>
+<li><code>cw</code>命令（change word）：改变命令，与<code>d</code>命令类似，执行完成之后会进入Insert模式，意为改变一个word。</li>
+<li><code>cc</code>命令：改变整行，保持原有的缩进。<ul>
+<li><code>set all</code>：查看vim所有的一些基础配置。</li>
+<li><code>set cindent</code>：开启缩进。</li>
+<li><code>set nocindent</code>：关闭缩进。</li>
+</ul>
+</li>
+<li><code>c$</code>命令：删除到行尾的内容，等于<code>d$a</code>。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>快捷命令<ul>
+<li><code>x</code> = <code>dl</code></li>
+<li><code>X</code> = <code>dh</code></li>
+<li><code>D</code> = <code>d$</code></li>
+<li><code>C</code> = <code>c$</code></li>
+<li><code>s</code> = <code>cl</code></li>
+<li><code>S</code> = <code>cc</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>命令计数放在哪里？<ul>
+<li><code>3dw</code>、<code>d3w</code>、<code>3d2w</code>，这些有什么区别呢？</li>
+<li>第一个数字是计数命令，代表命令的重复次数。</li>
+<li>第二个数字是位移命令，代表作用的范围。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>替换单个字符<ul>
+<li><code>r</code>命令（replace）：替换单个字符，你也可以使用<code>s</code>或者<code>cl</code>命令来完成相同的功能，但使用<code>r</code>命令不需要再按<code>Esc</code>键回到Normal模式。<ul>
+<li>备注：<code>r</code>命令同样可以使用数字计数，如<code>5rx</code>等操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>重复改动<ul>
+<li><code>.</code>命令：重复上一次做出的修改。<ul>
+<li>如删除Html语言。</li>
+</ul>
+</li>
+<li><code>.</code>命令重复的是修改命令，而不是被改动的内容。</li>
+<li>使用<code>.</code>命令来替换。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>Visual模式<ul>
+<li><ol>
+<li>选择文本范围</li>
+</ol>
+<ul>
+<li><code>v</code>命令：进入visual模式，移动光标覆盖你想操作的文本范围，最后键入操作符。</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>选择多行</li>
+</ol>
+<ul>
+<li><code>vjj</code>命令：选择3行，可以选择多行。</li>
+</ul>
+</li>
+<li><ol start="3">
+<li>选择文本块</li>
+</ol>
+<ul>
+<li><code>Ctrl-v</code>：进入visual块模式，以文本块为对象进行操作，常常用来编辑表格。</li>
+</ul>
+</li>
+<li><ol start="4">
+<li>文本块操作</li>
+</ol>
+<ul>
+<li><code>o</code>命令（other end）：会让光标置于被选中的文本的另一端，对角的位置上去，可以通过光标移动进行行块的所选范围进行移动。</li>
+<li><code>O</code>命令：同一行左右两个角之间进行移动。<ul>
+<li>备注：在visual块模式下，进行操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ol start="5">
+<li>移动文本</li>
+</ol>
+<ul>
+<li><code>p</code>命令（put）：以前通过用<code>d</code>或<code>x</code>进行删除的文本都可以用<code>p</code>命令进行读取。<ul>
+<li>如：<code>dd</code>删除行后，将光标移动到想要放入的地方然后<code>p</code>命令进行放入。</li>
+<li>如：移动某个单词，<code>dw</code>删除后，将光标移动到想要放入的地方然后使用<code>p</code>命令进行放入。</li>
+<li>如：交换两个字符，<code>x</code>删除字符，用<code>p</code>命令取回。</li>
+</ul>
+</li>
+<li><code>P</code>命令：把取回的内容放在光标之前。 <ul>
+<li>备注：可以与计数命令一起使用，如：<code>dd</code>删除行之后，<code>3p</code>会将删除的行取回三次放在当前的位置。 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ol start="6">
+<li>复制文本</li>
+</ol>
+<ul>
+<li><code>y</code>命令（yanking）： 将文本复制到一个寄存器中，用<code>p</code>命令取回。<ul>
+<li>备注：<ul>
+<li>和<code>d</code>命令类型。</li>
+<li><code>yw</code>：复制一个word。</li>
+<li><code>y2w</code>：复制两个word。</li>
+<li><code>yy</code>：复制一行。</li>
+<li><code>y$</code>：复制光标到行尾，<code>D</code>或<code>d$</code>（删除光标到行尾的内容）类似。</li>
+<li><code>Y</code>：与<code>yy</code>类似，复制一整行，规律是存在例外的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ol start="7">
+<li>使用剪贴板</li>
+</ol>
+<ul>
+<li><code>*yy</code>命令：将一行内容复制到剪贴板中。</li>
+<li><code>*p</code>命令：把剪贴板中的内容复制出来。<ul>
+<li>备至：只适用于gvim，实质上是将内容复制到名为*的寄存器中。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ol start="8">
+<li>文本对象</li>
+</ol>
+<ul>
+<li><code>daw</code>命令（delete a word）：删除一个单词，光标位于单词的中间而你要删除这个单词时使用的。</li>
+<li><code>diw</code>命令（delete inner word）：删除一个单词，不删除之后的空格符。</li>
+<li><code>cas</code>命令（change a sentence）：要修改一整个句子，删除之后的空格符，由Normal模式转到Insert模式。</li>
+<li><code>cis</code>命令（change inner sentence）：要修改一整个句子，不会删除之后的空格符。</li>
+</ul>
+</li>
+<li><ol start="9">
+<li>替换模式</li>
+</ol>
+<ul>
+<li><code>R</code>命令：键入的字符都会替换当前光标下的字符，键入<code>Esc</code>结束该模式。<ul>
+<li><code>Insert</code>键可以在Insert模式与Replace模式之间进行切换，<code>Backspace</code>键可以将原来的字符进行修复。 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ol start="10">
+<li>总结</li>
+</ol>
+<ul>
+<li><ol>
+<li>操作命令，位移命令和文本对象可以让你在使用这些命令时任意组合，如在使用操作符命令<code>N</code>配上位移命令<code>M</code>来构成一个<code>NM</code>命令。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>操作命令：<code>d</code>、<code>c</code>、<code>y</code>、<code>p</code></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>位移命令：<code>w</code>、<code>O</code>、<code>^</code>、<code>$</code></li>
+</ol>
+</li>
+<li><ol start="4">
+<li>文本对象：<code>aw</code>、<code>as</code>、<code>iw</code>、<code>is</code></li>
+</ol>
+</li>
+<li><ol start="5">
+<li>删除文本常用的方法：<ul>
+<li><ol>
+<li><code>x</code>：删除当前光标下的字符，与<code>dl</code>功能是一样。 </li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>X</code>：删除当前光标之前的字符，与<code>dh</code>功能一样。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>D</code>：删除当前光标到行尾的内容，与<code>d$</code>功能一样。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li><code>dw</code>：删除自当前光标到下一个word的开头。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li><code>db</code>：删除自当前光标到前一个word的开始。</li>
+</ol>
+</li>
+<li><ol start="6">
+<li><code>diw</code>：删除自当前光标到前一个word（不包括空白字符）。</li>
+</ol>
+</li>
+<li><ol start="7">
+<li><code>daw</code>：删除当前光标所在word（包括空白字符）。</li>
+</ol>
+</li>
+<li><ol start="8">
+<li><code>dG</code>：删除当前行到文件尾的内容。</li>
+</ol>
+</li>
+<li><ol start="9">
+<li><code>dgg</code>：删除当前行到文件头的内容。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>更改文本常用的方法<ul>
+<li>如果用<code>c</code>命令代替<code>d</code>这些命令就都变成来更改命令，如此类推。</li>
+<li><code>~</code>：改变当前光标下字符的大小写，并将光标移动到下一个字符。</li>
+<li><code>I</code>：将光标置于当前行第一个非空白字符处并进入Insert模式。</li>
+<li><code>A</code>：当前光标置于当前行尾并进入Insert模式。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="7-定制自己的vim"><a href="#7-定制自己的vim" class="headerlink" title="7. 定制自己的vim"></a>7. 定制自己的vim</h4><ul>
+<li><ol>
+<li><p>vimrc文件</p>
+<ul>
+<li><p>如果你厌倦了手工键入常用命令，或者要使你喜好的选项和映射一次性准备好，这时可以统统写入到<code>vimrc</code>（vim run command）的文件里，Vim在启动的时会读取这个文件。 </p>
+</li>
+<li><p><code>:read {filePath}</code>命令：读取文件到当前vim编辑器里边。</p>
+</li>
+<li><p><code>:set filetype={fileNameSuffix}</code>命令：设置当前vim窗口中文件的临时类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; vimrc位置：</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">1.Unix and OS&#x2F;2： ~&#x2F;.vimrc</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">2. Windows: $VIM\_vimrc</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 设置兼容性</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">set nocompatible</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 设置历史命令缓存数量</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">set history&#x3D;50</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 设置鼠标支持</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">set mouse&#x3D;a</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 打开语法高亮</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">set syntax on</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 设置高亮检索</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">set hlsearch</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 设置自动缩进</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">set autoindent</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 设置缩进宽度</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">set shiftwidth&#x3D;4</span></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>简单的映射<ul>
+<li>一个映射可以把一连串vim命令用一个按键来表示。</li>
+<li>如：用一个功能键或者字符串，将某个word单词，变成{word}，可以使用<code>:map</code>命令。</li>
+<li><code>:map &lt;F5&gt; i{&lt;Esc&gt;ea}&lt;Esc&gt;</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>选项窗口<ul>
+<li><code>:options</code>命令：在帮助主题中寻找或设置相应的选项。 </li>
+<li><code>set all</code>命令：查看所有的设置选项</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>常用选项<ul>
+<li><code>:help {options}</code>：查看某个选项的帮助。</li>
+<li><code>set {options}&amp;:{options}</code>：修改为默认值。</li>
+<li><code>set nowrap</code>：不要折行。</li>
+<li><code>set sidescroll=10</code>：自动左右滚动10个字符。</li>
+<li><code>set whichwrap=b,s,&lt;,&gt;,h,l,[,]</code>：Normal和Insert模式下跨行移动命令。</li>
+<li><code>set cmdheight=3</code>：设置命令行高度为3。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>使用高亮<ul>
+<li><code>syntax enable</code>：打开语法支持。</li>
+<li><code>syntax clear</code>：关闭当前高亮。</li>
+<li><code>colorscheme {themeName}</code>：打开不同的颜色主题。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="8-编辑多个文件"><a href="#8-编辑多个文件" class="headerlink" title="8. 编辑多个文件"></a>8. 编辑多个文件</h4><ul>
+<li><ol>
+<li>编辑另一个文件<ul>
+<li><code>:edit {fileName}</code>：编辑另一个文件。</li>
+<li><code>:hide edit {fileName}</code>：隐藏编辑另一个文件，不进行保存当前缓冲区的内容。</li>
+<li><code>:edit! {fileName}</code>：强制编辑另一个文件，不进行保存当前缓冲区的内容。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>文件列表<ul>
+<li><ol>
+<li>打开多个文件<ul>
+<li><code>vim fileName1 fileName2 fileName3</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>文件列表，当前在编辑哪个文件<ul>
+<li><code>:args</code>命令（arguments）： 显示当前的文件列表，当前文件以[]括起来。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>文件列表中的切换<ul>
+<li><code>:next</code>命令：打开编辑下一个文件。</li>
+<li><code>:next!</code>命令：强制打开编辑下一个文件。</li>
+<li><code>:wnext</code>命令：完成两个单独的命令。即：<code>:write :next</code></li>
+<li><code>:previous</code>命令：打开编辑上一个文件。</li>
+<li><code>:wprevious</code>命令：保存当前文件，打开编辑上一个文件。</li>
+<li><code>:last</code>命令：打开最后一个文件，<code>wlast</code>命令。</li>
+<li><code>:first</code>命令：打开第一个文件，<code>wfirst</code>命令。</li>
+<li><code>:2next</code>命令：使用计数命令，向前跳过两个文件。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>自动保存<ul>
+<li><code>:set autowrite</code>：在不同的文件转移时，不需要每次都执行<code>write</code>命令。</li>
+<li><code>:set noautowrite</code>：关闭自动保存。<ul>
+<li>备注：与word自动保存不同，过一段时间会自动保存，指某个事件发生时自动保存这个文件。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>编辑另一个文件列表<ul>
+<li><code>args fileName1 fileName2 fileName</code>：优点是不用重启Vim，就可以重新定义一个文件列表。</li>
+<li><code>args *.{Filename Suffix}</code>：支持通配符。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>最后文件提醒<ul>
+<li>当你有一个文件列表要编辑时，Vim会假设你要全部编辑它们，如果你要退出，就需要再执行一个退出命令。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>切换到另一文件<ul>
+<li><ol>
+<li><code>CTRL-^</code>：两个文件之间快速的切换。<ul>
+<li><code>args fileName1 fileName2</code>打开文件之后，再使用了<code>:next</code>或者<code>previous</code>之后，可以使用这个命令非常方便的在两个文件中进行切换。 </li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>多个文件之间的标记。<ul>
+<li>全局标记：使用大写字母命名标记。<ul>
+<li>如：<code>args fileName1</code>后使用<code>m{markFlag}</code>，这个时候去别的文件之后可以使用<code>&#39;</code>或者`跳转到自定义标记的位置。</li>
+<li>如果你删除了局部标记所在的行，也就相当于删除了这个局部标记。与全局标记不同，全局标记会一直存在下去。</li>
+</ul>
+</li>
+<li>预定义标记<ul>
+<li>`’’：关闭文件时的光标的位置。</li>
+<li>`.：文件最后一次修改的地方。</li>
+<li>在多文件中也可以使用<code>CTRL-i</code>和<code>CTRL-o</code>两个同样试用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>备份<ul>
+<li><code>:set backup</code>：生成备份文件，文件名为原文件名加一个<code>~</code>。<ul>
+<li>备注：<code>ZZ</code>进行退出，是不能生成备份文件的，需要使用<code>:write</code>。</li>
+</ul>
+</li>
+<li><code>:set backupext=.bak</code>：修改生成一个名为原文件名加<code>.bak</code>的备份文件。</li>
+<li><code>:set patchmode=.orig</code>：保存一份修改前的原始文件作为副本，同时后缀名为<code>.orig</code>。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>在文件之间复制粘贴<ul>
+<li><ol>
+<li>简单的复制粘贴<ul>
+<li><code>:edit {fileName}</code>打开你要找的文件，然后<code>/{检索内容}</code>搜索你要复制的内容，然后<code>v</code>进入可视模式选择你要复制的内容，然后<code>y</code>复制，然后<code>:edit {fileName}</code>回到你要粘贴的文件，之后<code>/{检索内容}</code>搜索你要粘贴的位置，最后<code>p</code>粘贴刚刚复制的文本。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>使用寄存器<ul>
+<li>复制多个独立的文本到另一个文件中时，这个时候可以使用寄存器，使用<code>a</code>到<code>z</code>的字母作为寄存器的名字。 <ul>
+<li>使用可视模式选择文本，然后<code>&quot;{寄存器名称}</code>，即：把一整块文本复制到寄存器中。</li>
+</ul>
+</li>
+<li><code>&quot;fyas</code>：把一个句子复制到名为f（first）的寄存器中。</li>
+<li><code>&quot;l3Y</code>：把3个整行的内容复制到名为l（line）的寄存器中。</li>
+<li><code>&quot;bp</code>：取出寄存器b中的内容文本。</li>
+<li><code>wdaw</code>：删除一个word并将其存入名为w（word）的寄存器中。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>向文件中追加内容<ul>
+<li><code>:read {fileName}</code>：向当前文件进行追加<code>{fileName}</code>文件内容。</li>
+<li><code>:write &gt;&gt; {fileName}</code>：将当前文件追加到文件名为<code>{fileName}</code>的文件中去，只能追加到文件的最后。</li>
+<li><code>:write {newFileName}</code>：将当前文件写入到名为<code>{newFileName}</code>新文件中去。</li>
+<li><code>:&#39;&lt;,&#39;&gt; write &gt;&gt; {newFileName}</code>：在Visual模式下也可以进行选择要写入的文本。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>查看文件<ul>
+<li><code>vim {fileName}</code>：直接打开编辑文件，可以读写。</li>
+<li><code>vim -R {fileNmae}</code>：以只读模式打开文件。</li>
+<li><code>vim -M {fileNmae}</code>：强制性的避免对文件进行修改，其中<code>-M</code>选项是告诉Vim工作于viewer模式中。</li>
+<li><code>:set modifiable</code> + <code>:set write</code>命令组合让viewer模式下的文件进行读写。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>更改文件名<ul>
+<li><code>:write {filename}</code>：将当前文件写入到新的文件中。</li>
+<li><code>saveas {filename}</code>：将当前文件进行另存为操作，且将新文件直接打开。</li>
+<li><code>:file {filename}</code>：与<code>saveas</code>功能相似，也可以实现文件名的更改。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="9-分隔窗口"><a href="#9-分隔窗口" class="headerlink" title="9. 分隔窗口"></a>9. 分隔窗口</h4><p>将一个窗口分隔成多个窗口，可以同时显示或者编辑多个文件，或者可以显示或编辑同一个文件的不同位置。</p>
+<ul>
+<li><ol>
+<li>分隔一个窗口<ul>
+<li><code>:split</code>命令：将屏幕分成上下两个窗口，并将光标定位在上面的窗口中。</li>
+<li><code>:vsplit</code>命令：将屏幕分成左右两个窗口，并将光标定位在左边的窗口中。</li>
+<li><code>CTRL-w w</code>（window）命令：切换当前活动窗口，与<code>CTRL-w CTRL-w</code>功能相同。</li>
+<li><code>:close</code>命令：关闭当前活动窗口。比如<code>:quit</code>或<code>ZZ</code>均可以关闭当前窗口，但是其优点在于可以阻止你关闭最后一个窗口，不会意外的将Vim退出。</li>
+<li><code>:only</code>命令：关闭除当前窗口之外的所有窗口。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>为另一个文件分隔出一个窗口<ul>
+<li><code>:split {otherFile}</code>：打开第二个窗口同时在新打开的窗口中开始编辑。</li>
+<li><code>:new</code>：打开一个新的窗口并开始编辑一个空的缓冲区。<ul>
+<li>备注：可以重复的使用<code>:split</code>或<code>new</code>命令打开任何你喜欢的窗口数目。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>窗口的大小<ul>
+<li><ol>
+<li><code>:3solit {fileName}</code>：高度为3的新窗口，名为<code>{fileName}</code>的文件。 </li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>CTRL-w +</code>：窗口高度增加1行。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>CTRL-w -</code>：窗口高度减小1行。<ul>
+<li>备注：可以增加计数命令，如<code>4CTRL-w -</code>一次减少4行。 </li>
+<li><code>{height} CTRL-w</code>：窗口高度指定为一个固定的height。</li>
+<li>备注：不指定高度时，默认让窗口达到它的最大的高度。</li>
+<li><code>:set mouse=a</code>：设置使用鼠标控制窗口调整。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>常用选项<ul>
+<li><code>winminheight</code>：强制窗口的最小高度，可以使用<code>:set wmh=4</code>。</li>
+<li><code>winminwidth</code>：强制窗口的最小宽度，可以使用<code>:set smw=4</code>。</li>
+<li><code>equalalways</code>：自动让所有窗口均摊屏幕上可用的高度和宽度。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>垂直分隔<ul>
+<li><ol>
+<li>常用命令 <ul>
+<li><code>:vsplit</code>命令：将屏幕分成左右两个窗口，并将光标定位在左边的窗口中。</li>
+<li><code>:vnew</code>：垂直打开一个新的窗口并开始编辑一个空的缓冲区。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>切换窗口<ul>
+<li><code>CTRL-w h</code>：切换到左边的窗口。</li>
+<li><code>CTRL-w j</code>：切换到下边的窗口。</li>
+<li><code>CTRL-w k</code>：切换到上边的窗口。</li>
+<li><code>CTRL-w l</code>：切换到右边的窗口。</li>
+<li><code>CTRL-w t</code>：切换到顶部的窗口。（top）</li>
+<li><code>CTRL-w b</code>：切换到底部的窗口。（bottom）</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>移动窗口<ul>
+<li><code>CTRL-w H</code>：向左移动窗口</li>
+<li><code>CTRL-w J</code>：向下移动窗口</li>
+<li><code>CTRL-w K</code>：向上移动窗口</li>
+<li><code>CTRL-w L</code>：向右移动窗口</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>针对所有窗口操作的命令<ul>
+<li><ol>
+<li>常用命令<ul>
+<li><code>:qall</code>：关闭所有的窗口。（quit all）</li>
+<li><code>:wqall</code>：保存所有穿够内容并关闭窗口。（write quit all）</li>
+<li><code>:qall!</code>：强制关闭所有的窗口，不为文件保存。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>为每一个文件打开一个窗口 <ul>
+<li><code>vi -o *.txt</code>：水平打开多个文件，并且为每一个文件打开一个窗口。</li>
+<li><code>vi -O *.txt</code>：垂直打开多个文件，并且为每一个文件打开一个窗口。</li>
+<li><code>:all</code>命令：将文件列表中的文件，各打开一个水平的窗口进行显示或编辑。</li>
+<li><code>:vertical all</code>命令：将文件列表中的文件，各打开一个垂直的窗口进行显示或编辑。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>使用vimdiff查看文件的区别<ul>
+<li>备注：<code>vimdiff</code>是Vim的另一种特殊的启动方式，可以显示文件的不同之处。</li>
+<li><ol>
+<li>常用命令<ul>
+<li><code>vimdiff {fileName} {fileName}</code>：以diff模式打开两个文件进行比较。</li>
+<li><code>:vertical diffsplit {fileName}</code>：可以运行Vim之后进行比较两个不同的文件。</li>
+<li><code>]c</code>和<code>[c</code>：跳到下一个或上一个两个文件的不同的地方。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>消除差异<ul>
+<li><code>diffupdate</code>：重新比较两个文件，更细差异，主要用于修改文本之后。</li>
+<li><code>dp</code>（diff put）：将当前窗口不同的内容放到另一个窗口中。</li>
+<li><code>do</code>（diff obtain）：从另一个窗口中对应的位置上取来了差异的内容。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>其他<ul>
+<li><ol>
+<li><code>CTRL-w CTRL-^</code>：分隔出一个窗口来编辑前一个文件。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>常用选项<ul>
+<li><code>:set scrollbind</code>：打开同步滚动，通常这个选项是默认开启的。</li>
+<li><code>laststatus</code>：<strong>0</strong> 永不；<strong>1</strong> 只有在有至少两个窗口时；<strong>2</strong> 总是</li>
+<li><code>splitbelow</code>：用来控制新打开窗口出现在当前窗口的下边。</li>
+<li><code>splitright</code>：用来控制新打开窗口出现在当前窗口的右边。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>页签<ul>
+<li>解决平铺在显示屏幕上窗口不够用的问题。</li>
+<li><code>CTRL-w T</code>：将当前活动窗口以页签的形式显示。</li>
+<li><code>:tabedit {fileName}</code>：以页签的形式显示<code>{fileName}</code>的文件。</li>
+<li><code>gt</code>（goto tab）：转到下一个标签页，最后一个标签页回到第一个。</li>
+<li><code>gT</code>（goto tab）：转到上一个标签页，第一个标签页回到最后一个。</li>
+<li><code>{count}gt</code>：转到第<code>{count}</code>个标签页，首个标签页的编号为1。</li>
+<li><code>:tabonly</code>：关闭除当前页签之后的所有页签。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="10-大刀阔斧"><a href="#10-大刀阔斧" class="headerlink" title="10. 大刀阔斧"></a>10. 大刀阔斧</h4><ul>
+<li><ol>
+<li>命令的记录和回放<ul>
+<li><ol>
+<li>操作步骤：<ul>
+<li><ol>
+<li><code>q{register}</code>命令：将后续的动作记录到名为<code>{register}</code>的寄存器中，其中给出的寄存器名字必须是<code>a</code>到<code>z</code>之间的一个字母。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>执行你要执行的操作，按下<code>q</code>以结束对命令的记录。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>@{register}</code>命令：执行刚刚记录下来的宏。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>例子：<ul>
+<li><ol>
+<li><code>qa</code>：开始将后续的命令记入到寄存器<code>a</code>中。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>将光标移动到行首。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>i#include &quot;&lt;Esc&gt;</code>，在该行之前插入<code>#include</code>。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>$将光标移动到行尾。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li><code>a.h&quot;&lt;Esc&gt;</code>：在行尾加上<code>.h&quot;</code>字符。</li>
+</ol>
+</li>
+<li><ol start="6">
+<li><code>j</code>：移动到下一行。</li>
+</ol>
+</li>
+<li><ol start="7">
+<li><code>q</code>：停止记录。</li>
+</ol>
+</li>
+<li><ol start="8">
+<li><code>@a</code>：执行记录的宏，可以加计数命令。</li>
+</ol>
+</li>
+<li><ol start="9">
+<li><code>@@</code>：重复上一次宏的命令。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>编辑宏的内容<ul>
+<li><ol>
+<li><code>&quot;ap</code>命令：显示宏的内容。 </li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>&quot;ad$</code>命令：将编辑好的宏的内容再一次的放入到寄存器中。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>qA</code>命令：向寄存器<code>a</code>中追加内容。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>替换<ul>
+<li><ol>
+<li>通用形式<ul>
+<li><code>:[range]submitute/from/to/[flags]</code>：对一个指定的范围执行替换操作，<code>range</code>指范围，<code>from</code>被替换的内容，与搜索命令所用的正则表达式类似，<code>to</code>替换为的内容，<code>flags</code>指一些常用的标记。 <ul>
+<li>如：<code>:s/the /these /g</code>，g是global的意思。</li>
+<li>如: <code>:s/one\two/one or two/g</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>常用选项<ul>
+<li><code>range</code>：作用范围，<code>range=%</code>范围为所有行，而缺省只作用于当前行。</li>
+<li><code>flags</code>：标记，<code>flags=g（global）</code>将改变一行所有符合目标字符串的全部字符进行替换。<code>flags=c</code>：在执行每个替换前请求用户确认<code>confirm</code>。<ul>
+<li><code>y</code>：好吧，yes。</li>
+<li><code>n</code>：不，no。</li>
+<li><code>a</code>：全部，all。</li>
+<li><code>q</code>：退出，quit。</li>
+<li><code>l</code>：把现在这个修改结束后进行退出。</li>
+<li><code>CTRL-E</code>：向上滚屏一行。</li>
+<li><code>CTRL-Y</code>：向下滚屏一行。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>命令的作用范围<ul>
+<li><code>:1,5s/this/that/g</code>：对第1行到第5行的文本执行替换操作。</li>
+<li><code>:3s/this/that/g</code>：对指定行进行替换操作。</li>
+<li><code>:.,$s/this/that/g</code>：当前行到最后一行范围，如：<code>$=1,$</code>。</li>
+<li><code>:?^Chapter?,/^Chapter/s=this=that=g</code>：使用搜索模式来指定作用范围。</li>
+<li><code>:?^Chapter?+1,/^Chapter/-1s=this=that=g</code>：增与减行的范围操作。</li>
+<li><code>.+3,$-5s/this/that/g</code>：将当前行的下三行到倒数第6行的作用操作。</li>
+<li><code>&#39;t,&#39;bs/this/that/g</code>：使用标记确定操作范围。</li>
+<li><code>&#39;&lt;,&#39;&gt;s/this/that/g</code>：Visual模式确定的范围。</li>
+<li><code>&#39;&gt;,$</code>：从上一次VIsual模式时选定的文本区域的结束处到文本末尾的这样的区域。</li>
+<li><code>.,.+4</code>：<code>.</code>当前行到,<code>+4</code>从当前行到向下4行。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>全局命令<ul>
+<li><code>:[range]global/{pattern}/{command}</code>：找到符合某个匹配模式的行，然后将命令作用于这些行上，全局命令的默认作用范围是整个文件。</li>
+<li><code>:g=//=s/foobar/barfoo/g</code>：整个文件中包含<code>//</code>的行，进行替换操作。</li>
+<li><code>:g=//=d</code>：整个文件中包含<code>//</code>的行，进行删除操作。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>Visual Block模式<ul>
+<li><ol>
+<li>插入文本<ul>
+<li><code>Insert&lt;Esc&gt;</code>：在文本块的每行的行首，进行插入文本。</li>
+<li><code>Astring&lt;Esc&gt;</code>：在文本块的每行的行尾，进行插入文本。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>改变文本<ul>
+<li><code>cstring&lt;Esc&gt;</code>：修改文本块的文本，仅仅会修改文本块的内容。</li>
+<li><code>Cstring&lt;Esc&gt;</code>：修改文本块的文本，会删除文本块尾部的内容。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>改变文本的大小写<ul>
+<li><code>~</code>：交换大小写。</li>
+<li><code>U</code>：将小写变大写。</li>
+<li><code>u</code>：将大写变小写。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>填充命令<ul>
+<li><code>rx</code>：以字符<code>x</code>进行文本块的填充操作。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>左右移动<ul>
+<li><code>&lt;</code>命令：会使你的文本向左移动一个shift单位。</li>
+<li><code>&gt;</code>命令：会使你的文本向右移动一个shift单位。</li>
+<li><code>:set shiftwidth=4</code>：设置一个shift单位的宽度。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>将多行内容粘贴起来<ul>
+<li><code>J</code>命令：使文本块纵跨的所有文本被连接为一行。</li>
+<li><code>gJ</code>命令：如果你想要保留那些前导空白和后缀的空白时，可以使用。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>读写文件<ul>
+<li><ol>
+<li>读取文件<ul>
+<li><code>:read fileName</code>：读入文件的内容放在当前行。</li>
+<li><code>$read fileName</code>：追加到文件的最后。</li>
+<li><code>0read fileName</code>：把文件放在第一行的上面。</li>
+<li><code>60read fileName</code>：那文件放在指定行的上面。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>写入文件<ul>
+<li><code>:write fileName</code>：没有指定一个范围时该命令将写入整个文件的内容。</li>
+<li><code>:.,$write fileName</code>：当前行到文件尾的内容写入文件，如果文件存在则失败。</li>
+<li><code>:.,$write! fileName</code>：强制当前行到文件尾的内容写入文件，会进入覆盖模式。</li>
+<li><code>:.write fileName</code>：将当前行写入文件中。</li>
+<li><code>:.write &gt;&gt; fileName</code>：将当前行的内容追加到文件中。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>格式化文本<ul>
+<li><code>:set textwidth</code>： 查看键入文字的时候每行的内容能自动调节到适应当前设置的宽度，每一行都会自动调整到只包含最多几个字符，Vim进行格式化文本的时候不会打断你的单词。</li>
+<li><code>:set textwidth=100</code>： 设置键入文字的时候每行的内容能自动调节到适应当前设置的宽度，每一行都会自动调整到只包含最多<code>100</code>个字符，Vim进行格式化文本的时候不会打断你的单词。</li>
+<li><code>:gqap</code>：<code>gq</code>为Vim的一个格式化操作符号，<code>ap</code>是一个文本对象，即：a paragraph。</li>
+<li><code>gg gqG</code>：格式化整个文件的内容。</li>
+<li><code>gqgq</code>：格式化当前行，可以与<code>.</code>重复命令一起使用。</li>
+<li><code>gqj</code>：格式化当前行和它下面的一行。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>改变大小写<ul>
+<li><code>guw</code>命令：<code>gu</code>是变小写的操作符，<code>w</code>是位移。</li>
+<li><code>gUw</code>命令：<code>gU</code>是变大写的操作，<code>w</code>是位移。</li>
+<li><code>g~w</code>命令：将字母的大小写进行反转，大写变小写，小写变大写。</li>
+<li><code>gugu</code>命令：使一整行变为小写，简写为<code>guu</code>，同理<code>gUgU</code>、<code>gUU</code>、<code>g~g~</code>、<code>g~~</code>。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>使用外部程序<ul>
+<li><code>sort &lt; input.txt &gt; output.txt</code>：</li>
+<li><code>!5G</code>：<code>!</code>过滤操作符，<code>5G</code>为移动命令，决定了将哪个区域送到过滤程序中。</li>
+<li><code>!!date</code>：<code>!!</code>命令为过滤当前行，<code>date</code>命令显示当前时间。</li>
+<li><code>write !wc</code>：将文本写入一个命令<code>wc</code>中，<code>wc</code>命令是统计行数，单词数，字符数。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vim/" rel="tag"># vim</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/01/11/rxjs-combineLatest-withLatestFrom-zip/" rel="next" title="Rxjs【combineLatest、withLatestFrom、zip】">
+                  <i class="fa fa-chevron-left"></i> Rxjs【combineLatest、withLatestFrom、zip】
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/02/25/ng-path-mapping/" rel="prev" title="Angular import path 最佳实践">
+                  Angular import path 最佳实践 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-插入文本"><span class="nav-number">2.</span> <span class="nav-text">1. 插入文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-帮助文档"><span class="nav-number">3.</span> <span class="nav-text">2. 帮助文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-移动"><span class="nav-number">4.</span> <span class="nav-text">3. 移动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-简单的搜索模式"><span class="nav-number">5.</span> <span class="nav-text">4. 简单的搜索模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-使用标记"><span class="nav-number">6.</span> <span class="nav-text">5. 使用标记</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-小幅改动"><span class="nav-number">7.</span> <span class="nav-text">6. 小幅改动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-定制自己的vim"><span class="nav-number">8.</span> <span class="nav-text">7. 定制自己的vim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-编辑多个文件"><span class="nav-number">9.</span> <span class="nav-text">8. 编辑多个文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-分隔窗口"><span class="nav-number">10.</span> <span class="nav-text">9. 分隔窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-大刀阔斧"><span class="nav-number">11.</span> <span class="nav-text">10. 大刀阔斧</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="lanxuexing"
+    src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lanxuexing</p>
+  <div class="site-description" itemprop="description">love digging into the internals of frontend. always trying to reach the next level.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lanxuexing" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;lanxuexing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/5d2ca1a95d0f" title="简书 &amp;rarr; https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;5d2ca1a95d0f" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lanxuexing</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">246k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:44</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '6de5df5c9b850c3a6301',
+      clientSecret: 'd468faddc108a77530ab2ef61ddb80f1721549f6',
+      repo: 'blog-comments',
+      owner: 'lanxuexing',
+      admin: ['lanxuexing'],
+      id: '3223215466d9585f73271fd8858ae10a',
+        language: 'zh-CN',
+      distractionFreeMode: 'false'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>
